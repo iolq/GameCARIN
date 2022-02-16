@@ -1,37 +1,48 @@
 package com.company;
 
+import java.util.LinkedList;
+
 public class GeneticCode {
+    ExTokenizer To;
+    int result = 0;
+
+    GeneticCode(Pair<String,String> list){
+        To = new ExTokenizer(list);
+    }
+
     Expressions Program(){
         Expressions st = Statement();
         return  st;
     }
 
     Expressions Statement(){
-        Expressions wh = WhileStatement();
+
         int i = 1;
-        if(i == 1){
+        if(To.peek().equals("Command")){
             Expressions co = Command();
             return co;
-        }else if(i == 2){
+        }else if(To.peek().equals("BlockStatement")){
             Expressions Blo = BlockStatement();
             return Blo;
-        }else if(i == 3){
+        }else if(To.peek().equals("IfStatement")){
             Expressions If = IfStatement();
             return If;
+        }else{
+            Expressions wh = WhileStatement();
+            return wh;
         }
-        return wh;
     }
 
     Expressions Command(){
-        Expressions Ac = ActionCommand();
-        int i = 0;
 
-        if(i == 0){
+        if(To.peek().equals("AssignmentStatement")){
             Expressions As = AssignmentStatement();
             return As;
+        }else{
+            Expressions Ac = ActionCommand();
+            return Ac;
         }
 
-        return null;
     }
 
     Expressions AssignmentStatement(){
@@ -40,13 +51,16 @@ public class GeneticCode {
     }
 
     Expressions ActionCommand(){
-        Expressions Atk = AttackCommand();
 
-        int i = 0;
-        if(i == 0){
+
+        if(To.peek().equals("Move")){
             Expressions mo = MoveCommand();
+            return mo;
+        }else if(To.peek().equals("ATK")){
+            Expressions Atk = AttackCommand();
+            return Atk;
         }
-        return Atk;
+        return null;
     }
 
     Expressions MoveCommand(){
@@ -89,54 +103,75 @@ public class GeneticCode {
 
     Expressions Expression(){
         Expressions term = Term();
-        if(1 == 1){
-            Expressions Ex = Expression();
-            // Ex + term
-        }else if(2 == 2){
-            Expressions Ex = Expression();
-            // Ex - term
+        while(To.peek("+")||To.peek("-")){
+            String op = To.consume();
+            Expressions Term2 = Term();
+            if(op.equals("+")){
+//                br = new BinaryAritmExpr(term,"+",Term2);
+//                val = br;
+            }else if(op.equals("-")){
+//                br = new BinaryAritmExpr(term,"-",Term);
+//                val = br;
+            }
+//            result = br.eval(str);
         }
         return term;
     }
 
     Expressions Term(){
         Expressions fa = Factor();
-
-        if(1 == 1){
-            Expressions t = Term();
-            // t * fa
-        }else if(1 == 1){
-            Expressions t = Term();
-            // t / fa
-        }else if(1 == 1){
-            Expressions t = Term();
-            // t % fa
+        while(To.peek("*") || To.peek("/")||To.peek("%")){
+            String op = To.consume();
+            Expressions Fa2 = Factor();
+            switch (op) {
+                case "*":
+//                br = new BinaryAritmExpr(fa,"*",Fa2);
+//                fa = br;
+                    int i = 1;
+                    break;
+                case "/":
+                    if (Fa2 != null) {
+//                        br = new BinaryAritmExpr(fa, "/", Fa2);
+//                        val = br;
+                    }
+                    break;
+                case "%":
+                    if (Fa2 != null) {
+//                        br = new BinaryAritmExpr(fa, "%", Fa2);
+//                        val = br;
+                        int s = 0;
+                    }
+                    break;
+            }
+//            result = br.eval(str);
         }
         return fa;
     }
 
     Expressions Factor(){
         Expressions po = Power();
-        if(1 == 1){
+        if(To.peek("^")){
             Expressions fa = Factor();
-            // po ^ fa
+//            br = new BinaryAritmExpr(po, "^", fa);
+            // po = br;
         }
-        return Power();
+        return po;
     }
 
     Expressions Power(){
         Expressions se = SensorExpression();
-        if(1 == 1){
-            Number i = new Number(1);
-            return i;
+        if(IsNumber(To.peek())){
+            return new Number(Integer.parseInt(To.consume()));
         }else if(1 == 1){
             // return identify
             return null;
         }else if(1 == 1){
+            To.consume("(");
             Expressions Ex = Expression();
+            To.consume(")");
             return Ex;
         }
-        return null;
+        return se;
     }
 
     Expressions SensorExpression(){
@@ -147,5 +182,10 @@ public class GeneticCode {
             // antibody
         }
         return Di;
+    }
+
+    boolean IsNumber(String s) throws NumberFormatException{
+        Integer.parseInt(s);
+        return true;
     }
 }
