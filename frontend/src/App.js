@@ -1,12 +1,17 @@
 
 import './App.css';
 
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src='/lobby.jpg'></img>
-      </header>
+
+      <div className='homepage-bgimage '>
+        <div style={{ display: "flex" }}>
+          <button
+            className='button'
+            style={{ marginLeft: "1000px" }}>START</button></div></div>
+
     </div>
   );
 }
