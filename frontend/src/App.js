@@ -8,7 +8,7 @@ function App() {
       <div class="container">
         <div className='homepage-bgimage '>
           <div class="btn-holder">
-            <button className='button-corner '>START</button>
+            <button className='button-corner '>PLAY GAME</button>
           </div>
         </div>
 
