@@ -1,6 +1,40 @@
 .App {
   text-align: center;
 }
+.homepage-bgimage {
+  background: url("https://scontent.fcnx4-1.fna.fbcdn.net/v/t1.15752-9/272179335_468479094748574_7302064323711094195_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=ae9488&_nc_ohc=kRsFPJMbdhcAX-4sMsr&tn=hUU0vSJG6uVWfBvA&_nc_ht=scontent.fcnx4-1.fna&oh=03_AVJw2-5fsUtuUvU9w1XUfCmZHzLepfPW_CjREAV_6twbhA&oe=62304608");
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain ;
+}
+.container {
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100vh;
+  display: flex;
+}
+.container .btn-holder {
+  justify-content: flex-end;
+  display: flex;
+}
+
+.button-corner {
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+  border-radius: 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+ 
+  padding: 16px 32px;
+  cursor: pointer;
+  position: fixed;
+  bottom: 60px;
+  right: 400px;
+}
 
 .App-logo {
   height: 40vmin;

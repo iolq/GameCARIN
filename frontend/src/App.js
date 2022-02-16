@@ -1,12 +1,18 @@
 
 import './App.css';
 
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src='/lobby.jpg'></img>
-      </header>
+      <div class="container">
+        <div className='homepage-bgimage '>
+          <div class="btn-holder">
+            <button className='button-corner '>PLAY GAME</button>
+          </div>
+        </div>
+
+      </div >
     </div>
   );
 }
