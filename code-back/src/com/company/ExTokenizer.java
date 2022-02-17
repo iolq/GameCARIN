@@ -11,6 +11,8 @@ public class ExTokenizer implements Tokenizer{
 
     ExTokenizer(Pair<String,String> ac){
         list = ac;
+        src = list.snd;
+        computeNext();
     }
 
     private void computeNext() {
@@ -53,20 +55,20 @@ public class ExTokenizer implements Tokenizer{
 
     @Override
     public String peek() {
-
-        return list.fst;
+        return next;
     }
 
     @Override
     public String consume() {
         String result = next;
-            computeNext();
+        computeNext();
         return result;
     }
 
+
     @Override
     public String command() {
-        return list.snd;
+        return list.fst;
     }
 
     boolean peek(String s) {
