@@ -8,9 +8,14 @@ public class GeneticCode {
     int result = 0;
     private Map<String,Integer> str = new HashMap();
     private Binary br;
+    private Pair<String,Pair<String,String>> direct;
 
     GeneticCode(Pair<String,String> list){
         To = new ExTokenizer(list);
+    }
+
+    public void setDirect(Pair<String,Pair<String,String>> list){
+        direct = list;
     }
 
     Expressions Program(){
@@ -49,11 +54,11 @@ public class GeneticCode {
 
     Expressions AssignmentStatement(){
         Expressions Ex = Expression();
+        int va;
         return Ex;
     }
 
     Expressions ActionCommand(){
-
 
         if(To.peek().equals("Move")){
             Expressions mo = MoveCommand();
@@ -76,7 +81,18 @@ public class GeneticCode {
     }
 
     Expressions Direction(){
-//        Move m = new Move();
+        Move m = new Move();
+        Pair<String, String> p = direct.snd;
+        switch (direct.fst) {
+            case "Up" -> m.moveUp(Integer.parseInt(p.snd));
+            case "Down" -> m.moveDown(Integer.parseInt(p.snd));
+            case "Left" -> m.moveLeft(Integer.parseInt(p.snd));
+            case "Right" -> m.moveRight(Integer.parseInt(p.snd));
+            case "UpRight" -> m.moveUpRight(Integer.parseInt(p.fst), Integer.parseInt(p.snd));
+            case "UpLeft" -> m.moveUpLeft(Integer.parseInt(p.fst), Integer.parseInt(p.snd));
+            case "DownRight" -> m.moveDownRight(Integer.parseInt(p.fst), Integer.parseInt(p.snd));
+            case "DownLeft" -> m.moveDownLeft(Integer.parseInt(p.fst), Integer.parseInt(p.snd));
+        }
         return null;
     }
 
@@ -86,20 +102,14 @@ public class GeneticCode {
 
     Expressions IfStatement(){
         Expressions Ex = Expression();
-        if(Ex == Ex){
-            Expressions st = Statement();
-        }else{
-            Expressions st = Statement();
-        }
+        Expressions TrueStatement;
+        Expressions FalseStatement;
         return null;
     }
 
     Expressions WhileStatement(){
         Expressions Ex = Expression();
-//        while(Ex == Ex){
-//            Expressions St = Statement();
-//            break;
-//        }
+        Expressions St = Statement();
         return null;
     }
 
@@ -153,8 +163,9 @@ public class GeneticCode {
         Expressions po = Power();
         while (To.peek("^")){
             if(To.peek("^")){
+                String op = To.consume();
                 Expressions fa = Factor();
-                br = new Binary(po, "^", fa);
+                br = new Binary(po, op, fa);
                 po = br;
             }
             result = br.eval(str);
