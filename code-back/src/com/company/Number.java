@@ -10,4 +10,8 @@ public class Number implements Expressions {
     }
 
 
+    @Override
+    public int eval(Map<String, Integer> binding) {
+        return num;
+    }
 }
