@@ -29,7 +29,7 @@ public class ExTokenizer implements Tokenizer{
                 }
             }else if(isCharacter(c)){
                 System.out.println("SyntaxError");
-            }else if(c=='+'||c=='-'||c=='('||c==')'||c=='*'||c=='/'||c=='%'){
+            }else if(c=='+'||c=='-'||c=='('||c==')'||c=='*'||c=='/'||c=='%'||c=='^'){
                 s.append(c);position++;
             }else{
                 System.out.println("SyntaxError");
