@@ -1,3 +1,5 @@
+package com.company;
+
 public class Move {
     int x, y;
     int width = 600;
