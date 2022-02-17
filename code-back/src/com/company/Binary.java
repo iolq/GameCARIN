@@ -28,6 +28,9 @@ public class Binary implements Expressions{
         if(op.equals("%")){
             return left_value % right_value;
         }
+        if(op.equals("^")){
+            return (int) Math.pow(left_value,right_value);
+        }
         return 0;
     }
 }
