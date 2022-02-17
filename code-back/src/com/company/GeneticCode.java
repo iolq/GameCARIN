@@ -1,10 +1,13 @@
 package com.company;
 
-import java.util.LinkedList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GeneticCode {
     ExTokenizer To;
     int result = 0;
+    private Map<String,Integer> str = new HashMap();
+    private Binary br;
 
     GeneticCode(Pair<String,String> list){
         To = new ExTokenizer(list);
@@ -17,7 +20,6 @@ public class GeneticCode {
 
     Expressions Statement(){
 
-        int i = 1;
         if(To.peek().equals("Command")){
             Expressions co = Command();
             return co;
@@ -94,10 +96,10 @@ public class GeneticCode {
 
     Expressions WhileStatement(){
         Expressions Ex = Expression();
-        while(Ex == Ex){
-            Expressions St = Statement();
-            break;
-        }
+//        while(Ex == Ex){
+//            Expressions St = Statement();
+//            break;
+//        }
         return null;
     }
 
@@ -107,13 +109,13 @@ public class GeneticCode {
             String op = To.consume();
             Expressions Term2 = Term();
             if(op.equals("+")){
-//                br = new BinaryAritmExpr(term,"+",Term2);
-//                val = br;
+                br = new Binary(term,"+",Term2);
+                term = br;
             }else if(op.equals("-")){
-//                br = new BinaryAritmExpr(term,"-",Term);
-//                val = br;
+                br = new Binary(term,"-",Term2);
+                term = br;
             }
-//            result = br.eval(str);
+            result = br.eval(str);
         }
         return term;
     }
@@ -125,53 +127,59 @@ public class GeneticCode {
             Expressions Fa2 = Factor();
             switch (op) {
                 case "*":
-//                br = new BinaryAritmExpr(fa,"*",Fa2);
-//                fa = br;
-                    int i = 1;
+                br = new Binary(fa,"*",Fa2);
+                fa = br;
                     break;
                 case "/":
                     if (Fa2 != null) {
-//                        br = new BinaryAritmExpr(fa, "/", Fa2);
-//                        val = br;
+                        br = new Binary(fa, "/", Fa2);
+                        fa = br;
                     }
                     break;
                 case "%":
                     if (Fa2 != null) {
-//                        br = new BinaryAritmExpr(fa, "%", Fa2);
-//                        val = br;
-                        int s = 0;
+                        br = new Binary(fa, "%", Fa2);
+                        fa = br;
                     }
                     break;
             }
-//            result = br.eval(str);
+            result = br.eval(str);
         }
+
         return fa;
     }
 
     Expressions Factor(){
         Expressions po = Power();
-        if(To.peek("^")){
-            Expressions fa = Factor();
-//            br = new BinaryAritmExpr(po, "^", fa);
-            // po = br;
+        while (To.peek("^")){
+            if(To.peek("^")){
+                Expressions fa = Factor();
+                br = new Binary(po, "^", fa);
+                po = br;
+            }
+            result = br.eval(str);
         }
         return po;
     }
 
     Expressions Power(){
-        Expressions se = SensorExpression();
         if(IsNumber(To.peek())){
             return new Number(Integer.parseInt(To.consume()));
         }else if(1 == 1){
             // return identify
             return null;
-        }else if(1 == 1){
+        }else if(1 == 1) {
             To.consume("(");
             Expressions Ex = Expression();
             To.consume(")");
             return Ex;
         }
-        return se;
+//        }else{
+//            Expressions se = SensorExpression();
+//            return se;
+//        }
+
+        return null;
     }
 
     Expressions SensorExpression(){
@@ -187,5 +195,9 @@ public class GeneticCode {
     boolean IsNumber(String s) throws NumberFormatException{
         Integer.parseInt(s);
         return true;
+    }
+
+    public int getExr() {
+        return Expression().eval(str);
     }
 }
