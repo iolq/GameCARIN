@@ -198,6 +198,7 @@ public class GeneticCode {
     }
 
     public int getExr() {
+
         return Expression().eval(str);
     }
 }
