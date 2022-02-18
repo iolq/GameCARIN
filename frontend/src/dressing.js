@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 
-import './App.css';
+
 
 const BannerBtn = styled.a`
     background: #2B39AF;
@@ -22,22 +22,22 @@ const BannerBtn = styled.a`
 }
 `
 
-function App() {
-  return (
-    <div className="App">
-      <div class="container">
-        <div className='homepage-bgimage '>
+function dressing() {
+    return (
+
+        <div >
 
 
-          <BannerBtn className='button-corner' href="/dressing">PLAY GAME</BannerBtn>
+
+            eiei
 
 
-        </div>
 
-      </div >
-    </div>
-  );
+
+        </div >
+
+    );
 }
 
 
-export default App;
+export default dressing
