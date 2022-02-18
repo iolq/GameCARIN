@@ -9,6 +9,7 @@ public class Number implements Expressions {
         this.num = num;
     }
 
+
     @Override
     public int eval(Map<String, Integer> binding) {
         return num;
