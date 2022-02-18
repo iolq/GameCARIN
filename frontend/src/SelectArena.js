@@ -2,14 +2,14 @@ import { Link } from 'react-router-dom';
 import styled from "styled-components";
 
 
-function Dressing() {
+function SelectArena() {
     return (
 
         <div >
 
 
 
-            <a href='/SelectArena'>eiei</a>
+            <a href='/'>i sus</a>
 
 
 
@@ -20,4 +20,4 @@ function Dressing() {
 }
 
 
-export default Dressing
+export default SelectArena
