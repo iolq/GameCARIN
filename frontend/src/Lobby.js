@@ -3,20 +3,25 @@ import './Lobby.css';
 import styled from "styled-components";
 
 const BannerBtn = styled.a`
-    background: #2B39AF;
-    display: inline-block;
-    padding: .5rem 1rem;
-    text-decoration: none;
-    color: #fff;
-    border: 2px solid transparent;
+     background-color: white;
+  color: black;
+  border: 2px solid #555555;
+  border-radius: 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+ 
+  padding: 16px 32px;
+  cursor: pointer;
+  position: fixed;
+  
     transition: 0.3s;
-    margin-top: 1rem;
-    border-radius: 30px;
     text-transform: uppercase;
     cursor: pointer;
     &:hover {
         /* border: 2px solid #fff; */
-        background: #E85137;
+        background: black;
         color: #fff;
 }
 `
