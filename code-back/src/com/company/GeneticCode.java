@@ -18,10 +18,16 @@ public class GeneticCode {
         direct = list;
     }
 
+
+
+
+
+    // Program → Statement+
     Expressions Program(){
         return  Statement();
     }
 
+    // Statement → Command | BlockStatement | IfStatement | WhileStatement
     Expressions Statement(){
 
         if(To.peek("{")){
@@ -35,6 +41,7 @@ public class GeneticCode {
         }
     }
 
+    // Command → AssignmentStatement | ActionCommand
     Expressions Command(){
 
         if(To.peek("move") || To.peek("atk")){
@@ -45,6 +52,7 @@ public class GeneticCode {
 
     }
 
+    // AssignmentStatement → <identifier> = Expression
     Expressions AssignmentStatement(){
         String Identify = To.peek();
         To.consume("=");
@@ -52,6 +60,7 @@ public class GeneticCode {
         return null;
     }
 
+    // ActionCommand → MoveCommand | AttackCommand
     Expressions ActionCommand(){
 
         if(To.peek("move")){
@@ -62,16 +71,19 @@ public class GeneticCode {
         return null;
     }
 
+    // MoveCommand → move Direction
     Expressions MoveCommand(){
         Expressions move = Direction();
         return move;
     }
 
+    // AttackCommand → shoot Direction
     Expressions AttackCommand(){
         Expressions Atk = Direction();
         return Atk;
     }
 
+    // Direction → left | right | up | down | upleft | upright | downleft | downright
     Expressions Direction(){
         Move m = new Move();
         Pair<String, String> p = direct.snd;
@@ -88,10 +100,13 @@ public class GeneticCode {
         return null;
     }
 
+    // BlockStatement → { Statement* }
     Expressions BlockStatement(){
         return null;
     }
 
+
+    // IfStatement → if ( Expression ) then Statement else Statement
     Expressions IfStatement(){
 
         To.consume("if");
@@ -109,6 +124,7 @@ public class GeneticCode {
         return null;
     }
 
+    // WhileStatement → while ( Expression ) Statement
     Expressions WhileStatement(){
         To.consume("while");
         To.consume("(");
@@ -118,6 +134,7 @@ public class GeneticCode {
         return null;
     }
 
+    // Expression → Expression + Term | Expression - Term | Term
     Expressions Expression(){
         Expressions term = Term();
         while(To.peek("+")||To.peek("-")){
@@ -135,6 +152,8 @@ public class GeneticCode {
         return term;
     }
 
+
+    // Term → Term * Factor | Term / Factor | Term % Factor | Factor
     Expressions Term(){
         Expressions fa = Factor();
         while(To.peek("*") || To.peek("/")||To.peek("%")){
@@ -164,6 +183,7 @@ public class GeneticCode {
         return fa;
     }
 
+    // Factor → Power ^ Factor | Power
     Expressions Factor(){
         Expressions po = Power();
         while (To.peek("^")){
@@ -178,6 +198,7 @@ public class GeneticCode {
         return po;
     }
 
+    // Power → <number> | <identifier> | ( Expression ) | SensorExpression
     Expressions Power(){
         if(IsNumber(To.peek())){
             return new Number(Integer.parseInt(To.consume()));
@@ -195,6 +216,7 @@ public class GeneticCode {
         }
     }
 
+    // SensorExpression → virus | antibody | nearby Direction
     Expressions SensorExpression(){
 //        Expressions Di = Direction();
 //        if(1 == 1){
