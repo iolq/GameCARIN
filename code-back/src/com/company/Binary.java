@@ -33,4 +33,9 @@ public class Binary implements Expressions{
         }
         return 0;
     }
+
+    @Override
+    public int number() {
+        return 0;
+    }
 }
