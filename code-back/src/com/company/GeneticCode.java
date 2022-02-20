@@ -102,7 +102,8 @@ public class GeneticCode {
 
     // BlockStatement → { Statement* }
     Expressions BlockStatement(){
-        return null;
+        To.consume();
+        return new BlockStatement(Statement());
     }
 
 
@@ -114,12 +115,12 @@ public class GeneticCode {
         Expressions Ex = Expression();
         To.consume(")");
         To.consume("then");
-        Expressions TrueStatement = Statement();
+        IfStatement TrueStatement = (IfStatement) Statement();
         To.consume("else");
         if(To.peek("if")){
             IfStatement();
         }
-        Expressions FalseStatement = Statement();
+        IfStatement FalseStatement = (IfStatement) Statement();
         return new IfStatement(Ex,TrueStatement,FalseStatement);
     }
 
@@ -130,7 +131,7 @@ public class GeneticCode {
         Expressions Ex = Expression();
         To.consume(")");
         Expressions St = Statement();
-        return null;
+        return new WhileStatement(Ex, St);
     }
 
     // Expression → Expression + Term | Expression - Term | Term
