@@ -120,8 +120,7 @@ public class GeneticCode {
             IfStatement();
         }
         Expressions FalseStatement = Statement();
-
-        return null;
+        return new IfStatement(Ex,TrueStatement,FalseStatement);
     }
 
     // WhileStatement → while ( Expression ) Statement
