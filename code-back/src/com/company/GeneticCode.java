@@ -19,53 +19,45 @@ public class GeneticCode {
     }
 
     Expressions Program(){
-        Expressions st = Statement();
-        return  st;
+        return  Statement();
     }
 
     Expressions Statement(){
 
-        if(To.peek().equals("Command")){
-            Expressions co = Command();
-            return co;
-        }else if(To.peek().equals("BlockStatement")){
-            Expressions Blo = BlockStatement();
-            return Blo;
-        }else if(To.peek().equals("IfStatement")){
-            Expressions If = IfStatement();
-            return If;
-        }else{
-            Expressions wh = WhileStatement();
-            return wh;
+        if(To.peek("{")){
+            return BlockStatement();
+        }else if(To.peek("if")){
+            return IfStatement();
+        }else if (To.peek("while")){
+            return WhileStatement();
+        } else{
+            return Command();
         }
     }
 
     Expressions Command(){
 
-        if(To.peek().equals("AssignmentStatement")){
-            Expressions As = AssignmentStatement();
-            return As;
+        if(To.peek("move") || To.peek("atk")){
+            return ActionCommand();
         }else{
-            Expressions Ac = ActionCommand();
-            return Ac;
+            return AssignmentStatement();
         }
 
     }
 
     Expressions AssignmentStatement(){
+        String Identify = To.peek();
+        To.consume("=");
         Expressions Ex = Expression();
-        int va;
-        return Ex;
+        return null;
     }
 
     Expressions ActionCommand(){
 
-        if(To.peek().equals("Move")){
-            Expressions mo = MoveCommand();
-            return mo;
-        }else if(To.peek().equals("ATK")){
-            Expressions Atk = AttackCommand();
-            return Atk;
+        if(To.peek("move")){
+            return MoveCommand();
+        }else if(To.peek("atk")){
+            return AttackCommand();
         }
         return null;
     }
@@ -101,14 +93,27 @@ public class GeneticCode {
     }
 
     Expressions IfStatement(){
+
+        To.consume("if");
+        To.consume("(");
         Expressions Ex = Expression();
-        Expressions TrueStatement;
-        Expressions FalseStatement;
+        To.consume(")");
+        To.consume("then");
+        Expressions TrueStatement = Statement();
+        To.consume("else");
+        if(To.peek("if")){
+            IfStatement();
+        }
+        Expressions FalseStatement = Statement();
+
         return null;
     }
 
     Expressions WhileStatement(){
+        To.consume("while");
+        To.consume("(");
         Expressions Ex = Expression();
+        To.consume(")");
         Expressions St = Statement();
         return null;
     }
@@ -176,31 +181,28 @@ public class GeneticCode {
     Expressions Power(){
         if(IsNumber(To.peek())){
             return new Number(Integer.parseInt(To.consume()));
-        }else if(1 == 1){
+        }else if(!IsNumber(To.peek())){
             // return identify
             return null;
-        }else if(1 == 1) {
+        }else if(To.peek().equals("(") || To.peek().equals(")")) {
             To.consume("(");
             Expressions Ex = Expression();
             To.consume(")");
             return Ex;
+        }else{
+            Expressions se = SensorExpression();
+            return se;
         }
-//        }else{
-//            Expressions se = SensorExpression();
-//            return se;
-//        }
-
-        return null;
     }
 
     Expressions SensorExpression(){
-        Expressions Di = Direction();
-        if(1 == 1){
-            //virus
-        }else if(1 == 1){
-            // antibody
-        }
-        return Di;
+//        Expressions Di = Direction();
+//        if(1 == 1){
+//            //virus
+//        }else if(1 == 1){
+//            // antibody
+//        }
+        return null;
     }
 
     boolean IsNumber(String s) throws NumberFormatException{
@@ -209,7 +211,6 @@ public class GeneticCode {
     }
 
     public int getExr() {
-
         return Expression().eval(str);
     }
 }
