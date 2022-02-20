@@ -14,10 +14,10 @@
   height: 100vh;
   display: flex;
 }
-.container .btn-holder {
+/* .container .btn-holder {
   justify-content: flex-end;
   display: flex;
-}
+} */
 
 .button-corner {
   background-color: white;
