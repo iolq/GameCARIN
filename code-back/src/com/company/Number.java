@@ -14,4 +14,9 @@ public class Number implements Expressions {
     public int eval(Map<String, Integer> binding) {
         return num;
     }
+
+    @Override
+    public int number() {
+        return num;
+    }
 }
