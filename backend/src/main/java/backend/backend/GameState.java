@@ -1,6 +1,6 @@
 package backend.backend;
 
-
+//initial other in game
 public class GameState {
     
 
