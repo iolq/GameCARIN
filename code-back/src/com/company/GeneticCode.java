@@ -17,7 +17,6 @@ public class GeneticCode {
     public void setDirect(Pair<String,Pair<String,String>> list){
         direct = list;
     }
-g
 
     // Program → Statement+
     Statement Program(){
@@ -117,7 +116,7 @@ g
         if(To.peek("if")){
             IfStatement();
         }
-        Statement FalseStatement = (Statement) Statement();
+        Statement FalseStatement = Statement();
         return  new IfStatement(Ex,TrueStatement,FalseStatement);
     }
 
