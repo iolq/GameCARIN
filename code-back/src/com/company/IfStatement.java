@@ -2,34 +2,27 @@ package com.company;
 
 import java.util.Map;
 
-public class IfStatement implements Expressions{
+public class IfStatement implements Statement{
     private final Expressions check;
-    private final Expressions True;
-    private Expressions False;
+    private final Statement True;
+    private Statement False;
 
-    public IfStatement(Expressions ch, Expressions t){
+    public IfStatement(Expressions ch, Statement t){
         check = ch;
         True = t;
     }
 
-    public IfStatement(Expressions ch, IfStatement t, IfStatement f){
+    public IfStatement(Expressions ch, Statement t, Statement f){
         this(ch,t);
         False = f;
     }
 
-
     @Override
-    public int eval(Map<String, Integer> binding) {
-        return 0;
-    }
-
-    @Override
-    public int number() {
+    public void eval() {
         if(check.number() != 0){
-            True.number();
+            True.eval();
         }else{
-            False.number();
+            False.eval();
         }
-        return 0;
     }
 }

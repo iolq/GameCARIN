@@ -2,28 +2,27 @@ package com.company;
 
 import java.util.Map;
 
-public class WhileStatement implements Expressions{
+public class WhileStatement implements Statement{
     Expressions ex;
-    Expressions info;
+    Statement info;
+    int count = 0;
 
-    WhileStatement(Expressions ex, Expressions info){
+    WhileStatement(Expressions ex, Statement info){
         this.ex = ex;
+        count = ex.number();
         this.info = info;
     }
 
     public void loop(){
-        while (ex.number() > 0){
-            info.number();
+        while (count > 0){
+            info.eval();
+            count--;
         }
     }
 
-    @Override
-    public int eval(Map<String, Integer> binding) {
-        return 0;
-    }
 
     @Override
-    public int number() {
-        return 0;
+    public void eval() {
+
     }
 }
