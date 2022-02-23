@@ -1,4 +1,8 @@
 public class Antibody implements Cell{
+
+    private int xposition;
+    private int yposition;
+
     @Override
     public int moveTo() {
         return 0;
@@ -27,5 +31,13 @@ public class Antibody implements Cell{
     @Override
     public int DeArmor() {
         return 0;
+    }
+
+    public int lifeSteal(int life){
+        return life;
+    }
+
+    public void setPosition(int xpos,int ypos){
+        this.xposition = xpos; this.yposition = ypos;
     }
 }
