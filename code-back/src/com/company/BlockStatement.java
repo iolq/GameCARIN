@@ -2,19 +2,15 @@ package com.company;
 
 import java.util.Map;
 
-public class BlockStatement implements Expressions{
-    Expressions st;
+public class BlockStatement implements Statement{
+    Statement st;
 
-    BlockStatement(Expressions st){
+    BlockStatement(Statement st){
         this.st = st;
     }
-    @Override
-    public int eval(Map<String, Integer> binding) {
-        return 0;
-    }
 
     @Override
-    public int number() {
-        return 0;
+    public void eval() {
+
     }
 }
