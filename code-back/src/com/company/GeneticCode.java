@@ -17,18 +17,15 @@ public class GeneticCode {
     public void setDirect(Pair<String,Pair<String,String>> list){
         direct = list;
     }
-
-
-
-
+g
 
     // Program → Statement+
-    Expressions Program(){
+    Statement Program(){
         return  Statement();
     }
 
     // Statement → Command | BlockStatement | IfStatement | WhileStatement
-    Expressions Statement(){
+    Statement Statement(){
 
         if(To.peek("{")){
             return BlockStatement();
@@ -42,7 +39,7 @@ public class GeneticCode {
     }
 
     // Command → AssignmentStatement | ActionCommand
-    Expressions Command(){
+    Statement Command(){
 
         if(To.peek("move") || To.peek("atk")){
             return ActionCommand();
@@ -53,7 +50,7 @@ public class GeneticCode {
     }
 
     // AssignmentStatement → <identifier> = Expression
-    Expressions AssignmentStatement(){
+    Statement AssignmentStatement(){
         String Identify = To.peek();
         To.consume("=");
         Expressions Ex = Expression();
@@ -61,7 +58,7 @@ public class GeneticCode {
     }
 
     // ActionCommand → MoveCommand | AttackCommand
-    Expressions ActionCommand(){
+    Statement ActionCommand(){
 
         if(To.peek("move")){
             return MoveCommand();
@@ -72,15 +69,15 @@ public class GeneticCode {
     }
 
     // MoveCommand → move Direction
-    Expressions MoveCommand(){
+    Statement MoveCommand(){
         Expressions move = Direction();
-        return move;
+        return (Statement) move;
     }
 
     // AttackCommand → shoot Direction
-    Expressions AttackCommand(){
+    Statement AttackCommand(){
         Expressions Atk = Direction();
-        return Atk;
+        return (Statement) Atk;
     }
 
     // Direction → left | right | up | down | upleft | upright | downleft | downright
@@ -101,36 +98,36 @@ public class GeneticCode {
     }
 
     // BlockStatement → { Statement* }
-    Expressions BlockStatement(){
+    Statement BlockStatement(){
         To.consume();
         return new BlockStatement(Statement());
     }
 
 
     // IfStatement → if ( Expression ) then Statement else Statement
-    Expressions IfStatement(){
+    Statement IfStatement(){
 
         To.consume("if");
         To.consume("(");
         Expressions Ex = Expression();
         To.consume(")");
         To.consume("then");
-        IfStatement TrueStatement = (IfStatement) Statement();
+        Statement TrueStatement = (Statement) Statement();
         To.consume("else");
         if(To.peek("if")){
             IfStatement();
         }
-        IfStatement FalseStatement = (IfStatement) Statement();
-        return new IfStatement(Ex,TrueStatement,FalseStatement);
+        Statement FalseStatement = (Statement) Statement();
+        return  new IfStatement(Ex,TrueStatement,FalseStatement);
     }
 
     // WhileStatement → while ( Expression ) Statement
-    Expressions WhileStatement(){
+    Statement WhileStatement(){
         To.consume("while");
         To.consume("(");
         Expressions Ex = Expression();
         To.consume(")");
-        Expressions St = Statement();
+        Statement St = Statement();
         return new WhileStatement(Ex, St);
     }
 
