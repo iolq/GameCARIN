@@ -7,8 +7,9 @@ public class GeneticCode {
     int result = 0;
     private Map<String,Integer> str = new HashMap();
     private Binary br;
-    private final String[] directionList = {"left", "right", "up", "down", "upleft", "upright", "downleft", "downright"};
-    private final Set<String> directions = new HashSet<>(List.of(directionList));
+    private final String[] list = {"left", "right", "up", "down", "upleft", "upright", "downleft", "downright"};
+    private final Set<String> direction = new HashSet<>(List.of(list));
+    private Unit unit;
 
     GeneticCode(String str){
         To = new ExTokenizer(str);
@@ -66,30 +67,23 @@ public class GeneticCode {
 
     // MoveCommand → move Direction
     Statement MoveCommand(){
-        Expressions move = Direction();
-        return (Statement) move;
+        To.consume();
+        return new MoveCommand(Direction(), unit);
+
     }
 
     // AttackCommand → shoot Direction
     Statement AttackCommand(){
-        Expressions Atk = Direction();
-        return (Statement) Atk;
+        To.consume();
+        return new ATKCommand(Direction(), unit);
     }
 
     // Direction → left | right | up | down | upleft | upright | downleft | downright
-    Expressions Direction(){
-//        Move m = new Move();
-//        Pair<String, String> p = direct.snd;
-//        switch (direct.fst) {
-//            case "Up" -> m.moveUp(Integer.parseInt(p.snd));
-//            case "Down" -> m.moveDown(Integer.parseInt(p.snd));
-//            case "Left" -> m.moveLeft(Integer.parseInt(p.snd));
-//            case "Right" -> m.moveRight(Integer.parseInt(p.snd));
-//            case "UpRight" -> m.moveUpRight(Integer.parseInt(p.fst), Integer.parseInt(p.snd));
-//            case "UpLeft" -> m.moveUpLeft(Integer.parseInt(p.fst), Integer.parseInt(p.snd));
-//            case "DownRight" -> m.moveDownRight(Integer.parseInt(p.fst), Integer.parseInt(p.snd));
-//            case "DownLeft" -> m.moveDownLeft(Integer.parseInt(p.fst), Integer.parseInt(p.snd));
-//        }
+    Statement Direction(){
+
+        if(direction.contains(To.peek())){
+            return new Direction(To.peek());
+        }
         return null;
     }
 
@@ -221,11 +215,23 @@ public class GeneticCode {
     }
 
     boolean IsNumber(String s) throws NumberFormatException{
-        Integer.parseInt(s);
+        if(s == null || s.equals(""))
+            return false;
+        try {
+            int a = Integer.parseInt(s);
+        }
+        catch (NumberFormatException e)
+        {
+            return false;
+        }
         return true;
     }
 
     public int getExr() {
         return Expression().eval(str);
+    }
+
+    public String test(){
+        return AttackCommand().toString();
     }
 }
