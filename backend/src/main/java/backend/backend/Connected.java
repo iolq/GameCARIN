@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Connected {
     
     @CrossOrigin
-    @RequestMapping(value = "/Stage")
+    @RequestMapping(value = "/getStage")
     public void Stage(){}
 
 
     @CrossOrigin
-    @PostMapping("/Stage")
+    @PostMapping("/setStage")
     public void setStage(){}
 
 

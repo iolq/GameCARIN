@@ -1,5 +1,9 @@
 public class Virus implements Cell{
 
+    private int CostReward;
+    private int xposition;
+    private int yposition;
+
     @Override
     public int moveTo() {
         return 0;
@@ -28,5 +32,17 @@ public class Virus implements Cell{
     @Override
     public int DeArmor() {
         return 0;
+    }
+
+    public void setReward(int num){
+        this.CostReward = num;
+    }
+
+    public int lifeSteal(int life){
+        return life;
+    }
+
+    public void setPosition(int xpos,int ypos){
+        this.xposition = xpos; this.yposition = ypos;
     }
 }
