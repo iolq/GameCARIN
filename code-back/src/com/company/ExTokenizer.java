@@ -1,7 +1,6 @@
 package com.company;
 
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.regex.Pattern;
 
 public class ExTokenizer implements Tokenizer{
     private String src;
@@ -26,7 +25,12 @@ public class ExTokenizer implements Tokenizer{
                     s.append(src.charAt(position));
                 }
             }else if(isCharacter(c)){
-                System.out.println("SyntaxError");
+                s.append(c);
+                position++;
+                for(;position<src.length()
+                        &&(Character.isDigit(src.charAt(position)) || isCharacter(src.charAt(position)));position++){  //after first character can be a-zA-z0-9_
+                    s.append(src.charAt(position));
+                }
             }else if(c=='+'||c=='-'||c=='('||c==')'||c=='*'||c=='/'||c=='%'||c=='^'){
                 s.append(c);position++;
             }else{
@@ -44,10 +48,7 @@ public class ExTokenizer implements Tokenizer{
     }
 
     private boolean isCharacter(char c){
-        if((int) c <= 65 && (int) c >= 122){
-            return true;
-        }
-        return false;
+        return Pattern.matches("[a-zA-z]",new StringBuilder(1).append(c));
     }
 
 
