@@ -1,21 +1,17 @@
 package com.company;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class GeneticCode {
     ExTokenizer To;
     int result = 0;
     private Map<String,Integer> str = new HashMap();
     private Binary br;
-    private Pair<String,Pair<String,String>> direct;
+    private final String[] directionList = {"left", "right", "up", "down", "upleft", "upright", "downleft", "downright"};
+    private final Set<String> directions = new HashSet<>(List.of(directionList));
 
-    GeneticCode(Pair<String,String> list){
-        To = new ExTokenizer(list);
-    }
-
-    public void setDirect(Pair<String,Pair<String,String>> list){
-        direct = list;
+    GeneticCode(String str){
+        To = new ExTokenizer(str);
     }
 
     // Program → Statement+
@@ -33,6 +29,7 @@ public class GeneticCode {
         }else if (To.peek("while")){
             return WhileStatement();
         } else{
+            System.out.println("this");
             return Command();
         }
     }
@@ -81,18 +78,18 @@ public class GeneticCode {
 
     // Direction → left | right | up | down | upleft | upright | downleft | downright
     Expressions Direction(){
-        Move m = new Move();
-        Pair<String, String> p = direct.snd;
-        switch (direct.fst) {
-            case "Up" -> m.moveUp(Integer.parseInt(p.snd));
-            case "Down" -> m.moveDown(Integer.parseInt(p.snd));
-            case "Left" -> m.moveLeft(Integer.parseInt(p.snd));
-            case "Right" -> m.moveRight(Integer.parseInt(p.snd));
-            case "UpRight" -> m.moveUpRight(Integer.parseInt(p.fst), Integer.parseInt(p.snd));
-            case "UpLeft" -> m.moveUpLeft(Integer.parseInt(p.fst), Integer.parseInt(p.snd));
-            case "DownRight" -> m.moveDownRight(Integer.parseInt(p.fst), Integer.parseInt(p.snd));
-            case "DownLeft" -> m.moveDownLeft(Integer.parseInt(p.fst), Integer.parseInt(p.snd));
-        }
+//        Move m = new Move();
+//        Pair<String, String> p = direct.snd;
+//        switch (direct.fst) {
+//            case "Up" -> m.moveUp(Integer.parseInt(p.snd));
+//            case "Down" -> m.moveDown(Integer.parseInt(p.snd));
+//            case "Left" -> m.moveLeft(Integer.parseInt(p.snd));
+//            case "Right" -> m.moveRight(Integer.parseInt(p.snd));
+//            case "UpRight" -> m.moveUpRight(Integer.parseInt(p.fst), Integer.parseInt(p.snd));
+//            case "UpLeft" -> m.moveUpLeft(Integer.parseInt(p.fst), Integer.parseInt(p.snd));
+//            case "DownRight" -> m.moveDownRight(Integer.parseInt(p.fst), Integer.parseInt(p.snd));
+//            case "DownLeft" -> m.moveDownLeft(Integer.parseInt(p.fst), Integer.parseInt(p.snd));
+//        }
         return null;
     }
 
@@ -111,7 +108,7 @@ public class GeneticCode {
         Expressions Ex = Expression();
         To.consume(")");
         To.consume("then");
-        Statement TrueStatement = (Statement) Statement();
+        Statement TrueStatement = Statement();
         To.consume("else");
         if(To.peek("if")){
             IfStatement();
@@ -198,14 +195,14 @@ public class GeneticCode {
     Expressions Power(){
         if(IsNumber(To.peek())){
             return new Number(Integer.parseInt(To.consume()));
-        }else if(!IsNumber(To.peek())){
-            // return identify
-            return null;
-        }else if(To.peek().equals("(") || To.peek().equals(")")) {
+        }else if(To.peek().equals("(") || To.peek().equals(")")){
             To.consume("(");
             Expressions Ex = Expression();
             To.consume(")");
             return Ex;
+        }else if(!IsNumber(To.peek())) {
+            // return identify
+            return null;
         }else{
             Expressions se = SensorExpression();
             return se;
