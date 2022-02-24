@@ -4,14 +4,12 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 public class ExTokenizer implements Tokenizer{
-    Pair<String,String> list;
     private String src;
     private String next;
     private int position;
 
-    ExTokenizer(Pair<String,String> ac){
-        list = ac;
-        src = list.snd;
+    ExTokenizer(String ac){
+        src = ac;
         computeNext();
     }
 
@@ -66,10 +64,6 @@ public class ExTokenizer implements Tokenizer{
     }
 
 
-    @Override
-    public String command() {
-        return list.fst;
-    }
 
     boolean peek(String s) {
         if(s == null){
