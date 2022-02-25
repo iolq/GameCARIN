@@ -1,6 +1,9 @@
-public class Virus implements Cell{
+package com.company;
 
-    private int CostReward;
+import com.company.Cell;
+
+public class Antibody implements Cell {
+
     private int xposition;
     private int yposition;
 
@@ -32,10 +35,6 @@ public class Virus implements Cell{
     @Override
     public int DeArmor() {
         return 0;
-    }
-
-    public void setReward(int num){
-        this.CostReward = num;
     }
 
     public int lifeSteal(int life){

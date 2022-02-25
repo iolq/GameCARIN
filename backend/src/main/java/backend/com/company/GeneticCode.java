@@ -15,12 +15,12 @@ public class GeneticCode {
         To = new ExTokenizer(str);
     }
 
-    // Program → Statement+
+    // Program = Statement+
     Statement Program(){
         return  Statement();
     }
 
-    // Statement → Command | BlockStatement | IfStatement | WhileStatement
+    // Statement = Command | BlockStatement | IfStatement | WhileStatement
     Statement Statement(){
 
         if(To.peek("{")){
@@ -35,7 +35,7 @@ public class GeneticCode {
         }
     }
 
-    // Command → AssignmentStatement | ActionCommand
+    // Command = AssignmentStatement | ActionCommand
     Statement Command(){
 
         if(To.peek("move") || To.peek("atk")){
@@ -46,7 +46,7 @@ public class GeneticCode {
 
     }
 
-    // AssignmentStatement → <identifier> = Expression
+    // AssignmentStatement = <identifier> = Expression
     Statement AssignmentStatement(){
         String Identify = To.peek();
         To.consume("=");
@@ -54,7 +54,7 @@ public class GeneticCode {
         return null;
     }
 
-    // ActionCommand → MoveCommand | AttackCommand
+    // ActionCommand = MoveCommand | AttackCommand
     Statement ActionCommand(){
 
         if(To.peek("move")){
@@ -65,20 +65,20 @@ public class GeneticCode {
         return null;
     }
 
-    // MoveCommand → move Direction
+    // MoveCommand = move Direction
     Statement MoveCommand(){
         To.consume();
         return new MoveCommand(Direction(), unit);
 
     }
 
-    // AttackCommand → shoot Direction
+    // AttackCommand = shoot Direction
     Statement AttackCommand(){
         To.consume();
         return new ATKCommand(Direction(), unit);
     }
 
-    // Direction → left | right | up | down | upleft | upright | downleft | downright
+    // Direction = left | right | up | down | upleft | upright | downleft | downright
     Statement Direction(){
 
         if(direction.contains(To.peek())){
@@ -87,14 +87,14 @@ public class GeneticCode {
         return null;
     }
 
-    // BlockStatement → { Statement* }
+    // BlockStatement = { Statement* }
     Statement BlockStatement(){
         To.consume();
         return new BlockStatement(Statement());
     }
 
 
-    // IfStatement → if ( Expression ) then Statement else Statement
+    // IfStatement = if ( Expression ) then Statement else Statement
     Statement IfStatement(){
 
         To.consume("if");
@@ -111,7 +111,7 @@ public class GeneticCode {
         return  new IfStatement(Ex,TrueStatement,FalseStatement);
     }
 
-    // WhileStatement → while ( Expression ) Statement
+    // WhileStatement = while ( Expression ) Statement
     Statement WhileStatement(){
         To.consume("while");
         To.consume("(");
@@ -121,7 +121,7 @@ public class GeneticCode {
         return new WhileStatement(Ex, St);
     }
 
-    // Expression → Expression + Term | Expression - Term | Term
+    // Expression = Expression + Term | Expression - Term | Term
     Expressions Expression(){
         Expressions term = Term();
         while(To.peek("+")||To.peek("-")){
@@ -140,7 +140,7 @@ public class GeneticCode {
     }
 
 
-    // Term → Term * Factor | Term / Factor | Term % Factor | Factor
+    // Term = Term * Factor | Term / Factor | Term % Factor | Factor
     Expressions Term(){
         Expressions fa = Factor();
         while(To.peek("*") || To.peek("/")||To.peek("%")){
@@ -170,7 +170,7 @@ public class GeneticCode {
         return fa;
     }
 
-    // Factor → Power ^ Factor | Power
+    // Factor = Power ^ Factor | Power
     Expressions Factor(){
         Expressions po = Power();
         while (To.peek("^")){
@@ -185,7 +185,7 @@ public class GeneticCode {
         return po;
     }
 
-    // Power → <number> | <identifier> | ( Expression ) | SensorExpression
+    // Power = <number> | <identifier> | ( Expression ) | SensorExpression
     Expressions Power(){
         if(IsNumber(To.peek())){
             return new Number(Integer.parseInt(To.consume()));
@@ -203,7 +203,7 @@ public class GeneticCode {
         }
     }
 
-    // SensorExpression → virus | antibody | nearby Direction
+    // SensorExpression = virus | antibody | nearby Direction
     Expressions SensorExpression(){
 //        Expressions Di = Direction();
 //        if(1 == 1){

@@ -1,5 +1,10 @@
-public class Antibody implements Cell{
+package com.company;
 
+import com.company.Cell;
+
+public class Virus implements Cell {
+
+    private int CostReward;
     private int xposition;
     private int yposition;
 
@@ -31,6 +36,10 @@ public class Antibody implements Cell{
     @Override
     public int DeArmor() {
         return 0;
+    }
+
+    public void setReward(int num){
+        this.CostReward = num;
     }
 
     public int lifeSteal(int life){
