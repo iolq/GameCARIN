@@ -1,4 +1,6 @@
-package com.company;
+package backend.com.company;
+
+import com.company.Cell;
 
 public class Unit implements Cell{
     @Override

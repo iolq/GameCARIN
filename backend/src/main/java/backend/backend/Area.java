@@ -1,5 +1,8 @@
 package backend.backend;
 
+import com.company.Antibody;
+import com.company.Virus;
+
 public class Area {
     private Integer maxWidth;
     private Integer maxHeight;

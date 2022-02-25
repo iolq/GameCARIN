@@ -1,4 +1,4 @@
-package com.company;
+package backend.com.company;
 
 public class Direction implements Statement{
     String move;

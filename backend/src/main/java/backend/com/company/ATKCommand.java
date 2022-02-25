@@ -1,4 +1,4 @@
-package com.company;
+package backend.com.company;
 
 public class ATKCommand implements Statement{
      Statement direction;

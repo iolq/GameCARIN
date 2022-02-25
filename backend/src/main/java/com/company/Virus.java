@@ -1,12 +1,10 @@
 package com.company;
 
-import com.company.Cell;
+public class Virus implements Cell {
 
-public class Antibody implements Cell {
-
+    private int CostReward;
     private int xposition;
     private int yposition;
-    private int HandleCost;
 
     @Override
     public int moveTo() {
@@ -38,15 +36,15 @@ public class Antibody implements Cell {
         return 0;
     }
 
+    public void setReward(int num){
+        this.CostReward = num;
+    }
+
     public int lifeSteal(int life){
         return life;
     }
 
     public void setPosition(int xpos,int ypos){
         this.xposition = xpos; this.yposition = ypos;
-    }
-
-    public int HandleCosts(){
-        return this.HandleCost;
     }
 }
