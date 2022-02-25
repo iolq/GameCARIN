@@ -6,6 +6,7 @@ public class Antibody implements Cell {
 
     private int xposition;
     private int yposition;
+    private int HandleCost;
 
     @Override
     public int moveTo() {
@@ -43,5 +44,9 @@ public class Antibody implements Cell {
 
     public void setPosition(int xpos,int ypos){
         this.xposition = xpos; this.yposition = ypos;
+    }
+
+    public int HandleCosts(){
+        return this.HandleCost;
     }
 }

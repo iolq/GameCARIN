@@ -7,9 +7,22 @@ public class Area {
     private int countVirus;
     private int countAntibody;
 
+
     public void ResultParse(){}
-    public void spawnAntibody(){}
-    public void spawnVirus(){}
-    public void deleteVirus(){}
-    public void deleteAntibody(){}
+    public void spawnAntibody(){
+       
+        countAntibody++;
+    }
+    public void spawnVirus(){
+
+        countVirus++;
+    }
+    public void deleteVirus(Virus virus){
+
+        countVirus--;
+    }
+    public void deleteAntibody(Antibody anti){
+
+        countAntibody--;
+    }
 }
