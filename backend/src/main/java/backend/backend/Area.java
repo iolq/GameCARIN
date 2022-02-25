@@ -10,6 +10,6 @@ public class Area {
     public void ResultParse(){}
     public void spawnAntibody(){}
     public void spawnVirus(){}
-    public void deleteVirus(){}
-    public void deleteAntibody(){}
+    public void deleteVirus(Virus virus){}
+    public void deleteAntibody(Antibody anti){}
 }
