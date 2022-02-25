@@ -14,9 +14,9 @@ public class Game {
     }
 
     public void Update(){
-            inventory;
-            time;
-            state;
+            //inventory;
+            //time;
+            //state;
             
     }
 }

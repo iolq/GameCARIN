@@ -11,12 +11,16 @@ public class Connected {
     
     @CrossOrigin
     @RequestMapping(value = "/getStage")
-    public void Stage(){}
+    public void Stage(){
+
+    }
 
 
     @CrossOrigin
     @PostMapping("/setStage")
-    public void setStage(){}
+    public void setStage(){
+        
+    }
 
 
 }
