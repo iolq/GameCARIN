@@ -1,7 +1,9 @@
 package backend.backend;
 
-import com.company.Antibody;
-import com.company.Virus;
+import backend.com.company.Antibody;
+import backend.com.company.Virus;
+
+import java.util.List;
 
 public class Area {
     private Integer maxWidth;
@@ -9,7 +11,13 @@ public class Area {
     private int Cost;
     private int countVirus;
     private int countAntibody;
+    private List<Antibody> list;
 
+    Area(Integer maxW,Integer maxH){
+        this.maxHeight = maxH; this.maxWidth = maxW;
+        this.countAntibody = 0;
+        this.countVirus = 0;
+    }
 
     public void ResultParse(){}
     public void spawnAntibody(){
