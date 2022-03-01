@@ -1,6 +1,4 @@
-package com.company;
-
-import backend.com.company.Node;
+package backend.com.company;
 
 public interface Cell extends Node{
     int Hp = 0, Armor = 0, MaxHp = 0;
