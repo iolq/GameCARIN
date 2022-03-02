@@ -6,6 +6,8 @@ public class Virus implements Cell {
     private int xposition;
     private int yposition;
 
+    public Virus(){};
+
     @Override
     public int moveTo() {
         return 0;
