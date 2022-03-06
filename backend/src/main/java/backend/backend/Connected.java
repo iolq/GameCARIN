@@ -1,26 +1,31 @@
 package backend.backend;
 
-import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
-@RequestMapping(value = "/Game")
+@RestController
+@RequestMapping("/Game")
 public class Connected {
-    
-    @CrossOrigin
-    @RequestMapping(value = "/getStage")
-    public void Stage(){
+    Game game = new Game();
 
+    @CrossOrigin
+    @GetMapping(value = "/getStage")
+    public Game getStage(){
+        return game;
     }
 
 
     @CrossOrigin
     @PostMapping("/setStage")
-    public void setStage(@RequestBody int i){
-        
+    public int setStage(@RequestBody Game num){
+        game.setGameStage(num.getGameStage());
+
+        return num.getGameStage();
     }
 
 
