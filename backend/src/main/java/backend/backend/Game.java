@@ -7,6 +7,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Game {
     private Integer WidthScreen;
     private Integer HeightScreen;
@@ -22,7 +25,6 @@ public class Game {
     }
 
     public void GameLoop(){
-        init();
         while(true){
             Update();
             
@@ -35,9 +37,6 @@ public class Game {
     }
 
     //ตั้งค่าเริ่มต้น
-    public void init(){
-        
-    }
     public static void main(String[] args){
         
         Game start = new Game();
@@ -50,7 +49,6 @@ public class Game {
     }
 
     public int getGameStage(){
-
         return this.stage;
     }
 }
