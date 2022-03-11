@@ -2,23 +2,20 @@ package backend.backend;
 
 import backend.com.company.Antibody;
 import backend.com.company.Virus;
-import backend.com.company.Cell;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.LinkedList;
 
 import java.util.Random;
 
-public class Area implements MouseListener {
+public class Area {
     private Integer maxWidth;
     private Integer maxHeight;
     protected int Cost;
     protected int countVirus;
     protected int countAntibody;
     private int[][] areas = new int[8][8];
-    private LinkedList<Cell> listVirus;
-    private LinkedList<Cell> listAntibody;
+    private LinkedList<Virus> listVirus;
+    private LinkedList<Antibody> listAntibody;
     private Random random = new Random();
     private int currentX;
     private int currentY;
@@ -32,51 +29,31 @@ public class Area implements MouseListener {
     public void ResultParse(){
         
     }
-    public void spawnAntibody(){
+    public void spawnAntibody(Antibody anti){
+        this.listAntibody.add(anti);
         countAntibody++;
     }
-    public void spawnVirus(){
-        int positionX = random.nextInt(8);
-        int positionY = random.nextInt(2);
-        Virus enemy = new Virus();
-        enemy.setPosition(positionX,positionY);
-        areas[positionX][positionY] = 1;
+    public void spawnVirus(Virus virul){
+        this.listVirus.add(virul);
         countVirus++;
     }
     public void deleteVirus(Virus virus){
-
+        this.listVirus.remove(virus);
         countVirus--;
     }
     public void deleteAntibody(Antibody anti){
-
+        this.listAntibody.remove(anti);
         countAntibody--;
     }
+    public LinkedList<Virus> getVirus(){
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-
+        return listVirus;
+    }
+    public LinkedList<Antibody> getAntibody(){
+        return listAntibody;
     }
 
-    @Override
-    public void mousePressed(MouseEvent e) {
-
-        currentX = e.getX();
-        currentY = e.getY();
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
+    public void setUnitToArea(){
+        
     }
 }
