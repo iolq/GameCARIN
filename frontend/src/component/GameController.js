@@ -1,18 +1,19 @@
 import axios from "axios";
+import Config from "./Config";
 
-function GameController(){
 
-    var GetController = () =>{
-        axios.get("http://localhost:8080/game/State")
-        .then()
+class GameController{
+
+    static GetController = () =>{
+        var getGameStage = axios.get(Config.url + 'Game/getStage')
+
+        return getGameStage.data;
     }
 
-    var PostController = () =>{
-        axios.post()
-        .then()
+    static PostController = () =>{
+        var setGameStage = axios.post(Config.url + "Game/setStage")
+        return setGameStage;
     }
-    return(
-        <div></div>
-    );
+    
 }
 export default GameController;

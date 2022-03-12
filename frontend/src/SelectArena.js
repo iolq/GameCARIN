@@ -1,5 +1,6 @@
 
 import styled from "styled-components";
+import GameController from "./component/GameController";
 import './Lobby.css';
 
 const BannerBtn = styled.a`
@@ -66,6 +67,8 @@ const Bgimage = styled.div`
   
     `;
 function SelectArena() {
+
+
     return (
 
         <Container>

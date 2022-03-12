@@ -2,6 +2,7 @@ package backend.backend;
 
 import backend.com.company.Antibody;
 
+
 public class Table {
     private Area arena;
     private Antibody onHandleAntibody;
