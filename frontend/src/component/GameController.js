@@ -3,16 +3,31 @@ import Config from "./Config";
 
 
 class GameController{
-
-    static GetController = () =>{
-        var getGameStage = axios.get(Config.url + 'Game/getStage')
-
-        return getGameStage.data;
+    static getArea(numberofstage){
+        const UrlofArea = Config.url + "Area/getArea/" + {numberofstage}
+        if(UrlofArea){
+            return {
+                virus:{},
+                
+            }
+        }
     }
 
-    static PostController = () =>{
-        var setGameStage = axios.post(Config.url + "Game/setStage")
-        return setGameStage;
+    static async getStageGame(){
+        var gameStage = await axios.get(Config.url + "Game/getStage")
+
+        return gameStage.data.gameStage;
+    } 
+
+    static async setStageGame(gameStage){
+        await axios({
+            methode: 'post',
+            url: Config.url + 'Game/setStage',
+            header:{},
+            data:{
+                gameStage: gameStage
+            }
+        });
     }
     
 }

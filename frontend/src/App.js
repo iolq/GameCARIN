@@ -1,5 +1,6 @@
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {useEffect} from 'react'
 import GameController from './component/GameController';
 // import styled from "styled-components";
 
@@ -31,9 +32,12 @@ import SelectArena from './SelectArena';
 
 
 function App() {
-  var datas = GameController.GetController;
-  var datasus = GameController.PostController;
-  console.log(datas.toString)
+    
+    useEffect(()=>{
+        var data = GameController.getStageGame();
+        data.then(resp=>console.log(resp)) 
+    },[])
+    
   return (
 
     <Router>

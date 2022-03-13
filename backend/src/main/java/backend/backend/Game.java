@@ -7,14 +7,15 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("Game")
 public class Game {
     private Integer WidthScreen;
     private Integer HeightScreen;
     private Time time;
-    private Integer stage;
+    private Integer stage = 1;
     private Inventory inventory;
     private Area arena;
 
@@ -33,7 +34,6 @@ public class Game {
 
     public void Update(){
 
-
     }
 
     //ตั้งค่าเริ่มต้น
@@ -45,6 +45,7 @@ public class Game {
     }
 
     public void setGameStage(int number){
+        System.out.println(number);
         this.stage = number;
     }
 

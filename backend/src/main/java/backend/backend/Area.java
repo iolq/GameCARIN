@@ -2,14 +2,17 @@ package backend.backend;
 
 import backend.com.company.Antibody;
 import backend.com.company.Virus;
+import org.springframework.stereotype.Component;
 
 import java.util.LinkedList;
 
 import java.util.Random;
 
+@Component("Area")
 public class Area {
     private Integer maxWidth;
     private Integer maxHeight;
+    protected int numberofarea;
     protected int Cost;
     protected int countVirus;
     protected int countAntibody;
@@ -20,8 +23,7 @@ public class Area {
     private int currentX;
     private int currentY;
 
-    Area(Integer maxW,Integer maxH){
-        this.maxHeight = maxH; this.maxWidth = maxW;
+    Area(){
         this.countAntibody = 0;
         this.countVirus = 0;
     }
@@ -56,4 +58,13 @@ public class Area {
     public void setUnitToArea(){
         
     }
+
+    public void setArea(int number){
+        this.numberofarea = number;
+    }
+
+    public int getArea(){
+        return this.numberofarea;
+    }
+
 }

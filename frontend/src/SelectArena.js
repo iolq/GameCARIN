@@ -66,8 +66,7 @@ const Bgimage = styled.div`
     background-size: contain ;
   
     `;
-function SelectArena() {
-
+function SelectArena(){
 
     return (
 
