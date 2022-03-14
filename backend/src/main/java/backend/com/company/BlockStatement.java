@@ -13,4 +13,9 @@ public class BlockStatement implements Statement{
     public void eval() {
 
     }
+    @Override
+    public Pair<Integer, Integer> evalPair() {
+        return null;
+    }
+
 }
