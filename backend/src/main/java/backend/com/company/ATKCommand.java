@@ -2,14 +2,20 @@ package backend.com.company;
 
 public class ATKCommand implements Statement{
      Statement direction;
-     Unit unit;
-     ATKCommand(Statement direction, Unit unit){
+     Cell antibody, virus;
+     ATKCommand(Statement direction, Cell antibody, Cell virus){
          this.direction = direction;
-         this.unit = unit;
+         this.antibody = antibody;
+         this.virus = virus;
      }
 
     @Override
     public void eval() {
 
     }
+    @Override
+    public Pair<Integer, Integer> evalPair() {
+        return null;
+    }
+
 }

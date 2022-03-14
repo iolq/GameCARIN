@@ -1,4 +1,4 @@
-package main.java.backend.com.company;
+package backend.com.company;
 
 import java.util.*;
 
