@@ -1,9 +1,16 @@
 package backend.com.company;
 
-public class Unit implements Cell{
+public class RedBloodCell implements Cell{
+
+    private int CostReward;
+    private int xPosition;
+    private int yPosition;
+    private int HP;
+    
     @Override
-    public int moveTo() {
-        return 0;
+    public void moveTo(int x, int y) {
+        xPosition += x;
+        yPosition += y;
     }
 
     @Override
@@ -29,5 +36,14 @@ public class Unit implements Cell{
     @Override
     public int DeArmor() {
         return 0;
+    }
+    @Override
+    public int ATK(){
+        return 0;
+    }
+
+    @Override
+    public void dmg(int dmg){
+        HP =- dmg;
     }
 }
