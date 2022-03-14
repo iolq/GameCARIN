@@ -24,6 +24,8 @@ public class ExTokenizer implements Tokenizer{
                 for(position++;position<src.length() && Character.isDigit(src.charAt(position));position++){
                     s.append(src.charAt(position));
                 }
+            }else if(c=='+'||c=='-'||c=='('||c==')'||c=='*'||c=='/'||c=='%'||c=='^'){
+                s.append(c);position++;
             }else if(isCharacter(c)){
                 s.append(c);
                 position++;
@@ -31,8 +33,6 @@ public class ExTokenizer implements Tokenizer{
                         &&(Character.isDigit(src.charAt(position)) || isCharacter(src.charAt(position)));position++){  //after first character can be a-zA-z0-9_
                     s.append(src.charAt(position));
                 }
-            }else if(c=='+'||c=='-'||c=='('||c==')'||c=='*'||c=='/'||c=='%'||c=='^'){
-                s.append(c);position++;
             }else{
                 System.out.println("SyntaxError");
             }
