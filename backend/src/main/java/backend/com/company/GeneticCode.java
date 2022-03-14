@@ -11,8 +11,9 @@ public class GeneticCode {
     private final Set<String> direction = new HashSet<>(List.of(list));
     private Cell antibody, virus;
 
-    public GeneticCode(Cell antibody,String str){
+    public GeneticCode(Cell antibody,Cell virus,String str){
         this.antibody = antibody;
+        this.virus = virus;
         To = new ExTokenizer(str);
     }
 
@@ -31,7 +32,6 @@ public class GeneticCode {
         }else if (To.peek("while")){
             return WhileStatement();
         } else{
-            System.out.println("this");
             return Command();
         }
     }
@@ -76,7 +76,7 @@ public class GeneticCode {
     // AttackCommand = shoot Direction
     Statement AttackCommand(){
         To.consume();
-        return new ATKCommand(Direction(), antibody);
+        return new ATKCommand(To, antibody, virus);
     }
 
     // Direction = left | right | up | down | upleft | upright | downleft | downright

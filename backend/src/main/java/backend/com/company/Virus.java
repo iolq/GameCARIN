@@ -5,6 +5,7 @@ public class Virus implements Cell {
     private int CostReward;
     private int xPosition;
     private int yPosition;
+    private int HP;
 
     public Virus(){};
 
@@ -49,6 +50,16 @@ public class Virus implements Cell {
 
     public void setPosition(int xpos,int ypos){
         this.xPosition = xpos; this.yPosition = ypos;
+    }
+
+    @Override
+    public int ATK(){
+        return 0;
+    }
+
+    @Override
+    public void dmg(int dmg){
+        HP =- dmg;
     }
     
 }

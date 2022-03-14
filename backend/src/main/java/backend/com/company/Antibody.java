@@ -5,8 +5,12 @@ public class Antibody implements Cell {
     private int xPosition;
     private int yPosition;
     private int HandleCost;
+    private int dmg;
+    private int HP;
 
-    public Antibody(){};
+    public Antibody(){
+        HP = 500;
+    };
 
     @Override
     public void moveTo(int x, int y) {
@@ -37,6 +41,16 @@ public class Antibody implements Cell {
     @Override
     public int DeArmor() {
         return 0;
+    }
+
+    @Override
+    public int ATK(){
+        return 0;
+    }
+
+    @Override
+    public void dmg(int dmg){
+        HP -= dmg;
     }
 
     public int lifeSteal(int life){
