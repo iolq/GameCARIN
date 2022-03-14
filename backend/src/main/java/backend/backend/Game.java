@@ -41,8 +41,6 @@ public class Game {
                 System.out.println("pouse");
             }
 
-            this.arena.get(0).ResultParse();
-
         }
     }
 
