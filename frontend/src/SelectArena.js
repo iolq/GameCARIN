@@ -73,9 +73,9 @@ function SelectArena() {
                 <BannerBtn href="/Dressing">back</BannerBtn>
 
                 <Button_corner>
-                    <BannerBtn href="/SelectArena">EASY</BannerBtn>
-                    <BannerBtn href="/SelectArena">MEDIUM</BannerBtn>
-                    <BannerBtn href="/SelectArena">HARD</BannerBtn>
+                    <BannerBtn href="/arena">EASY</BannerBtn>
+                    <BannerBtn href="/arena">MEDIUM</BannerBtn>
+                    <BannerBtn href="/arena">HARD</BannerBtn>
                 </Button_corner>
             </Bgimage>
 

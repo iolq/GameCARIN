@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Dressing from './Dressing';
 import Lobby from './Lobby';
 import SelectArena from './SelectArena';
-
+import Arena from './Arena';
 // const BannerBtn = styled.a`
 //     background: #2B39AF;
 //     display: inline-block;
@@ -37,6 +37,7 @@ function App() {
         <Route path='/' exact element={<Lobby />} />
         <Route path='/Dressing' exact element={<Dressing />} />
         <Route path='/SelectArena' exact element={<SelectArena />} />
+        <Route path='/arena' exact element={<Arena />} />
 
       </Routes>
     </Router>
