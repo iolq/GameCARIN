@@ -29,6 +29,8 @@ public class Area {
         this.countVirus = 1;
         this.listVirus = new LinkedList<>();
         this.listAntibody = new LinkedList<>();
+        Antibody cell = new Antibody();
+        this.listAntibody.add(cell);
     }
 
     public void ResultParse(){
