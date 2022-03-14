@@ -39,10 +39,7 @@ const Container = styled.div`
 `
 function Arena() {
 
-    const [stage,setStage] = useState()
-    useEffect(()=>{
-
-    },[])
+    
 
     return (
 
