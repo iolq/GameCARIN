@@ -3,7 +3,7 @@ package backend.com.company;
 public interface Cell extends Node{
     int Hp = 0, Armor = 0, MaxHp = 0;
 
-    int moveTo();
+    void moveTo(int x,int y);
 
     int shootTo();
 
