@@ -3,10 +3,9 @@ package backend.com.company;
 public class ATKCommand implements Statement{
      Statement direction;
      Cell antibody, virus;
-     ATKCommand(Statement direction, Cell antibody, Cell virus){
+     ATKCommand(Statement direction, Cell antibody){
          this.direction = direction;
          this.antibody = antibody;
-         this.virus = virus;
      }
 
     @Override
