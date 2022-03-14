@@ -1,34 +1,27 @@
-package com.company;
+package backend.com.company;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class GeneticCode {
     ExTokenizer To;
     int result = 0;
     private Map<String,Integer> str = new HashMap();
     private Binary br;
-    private Pair<String,Pair<String,String>> direct;
+    private final String[] list = {"left", "right", "up", "down", "upleft", "upright", "downleft", "downright"};
+    private final Set<String> direction = new HashSet<>(List.of(list));
+    private Unit unit;
 
-    GeneticCode(Pair<String,String> list){
-        To = new ExTokenizer(list);
+    GeneticCode(String str){
+        To = new ExTokenizer(str);
     }
 
-    public void setDirect(Pair<String,Pair<String,String>> list){
-        direct = list;
-    }
-
-
-
-
-
-    // Program → Statement+
-    Expressions Program(){
+    // Program = Statement+
+    Statement Program(){
         return  Statement();
     }
 
-    // Statement → Command | BlockStatement | IfStatement | WhileStatement
-    Expressions Statement(){
+    // Statement = Command | BlockStatement | IfStatement | WhileStatement
+    Statement Statement(){
 
         if(To.peek("{")){
             return BlockStatement();
@@ -37,12 +30,13 @@ public class GeneticCode {
         }else if (To.peek("while")){
             return WhileStatement();
         } else{
+            System.out.println("this");
             return Command();
         }
     }
 
-    // Command → AssignmentStatement | ActionCommand
-    Expressions Command(){
+    // Command = AssignmentStatement | ActionCommand
+    Statement Command(){
 
         if(To.peek("move") || To.peek("atk")){
             return ActionCommand();
@@ -52,16 +46,16 @@ public class GeneticCode {
 
     }
 
-    // AssignmentStatement → <identifier> = Expression
-    Expressions AssignmentStatement(){
+    // AssignmentStatement = <identifier> = Expression
+    Statement AssignmentStatement(){
         String Identify = To.peek();
         To.consume("=");
         Expressions Ex = Expression();
         return null;
     }
 
-    // ActionCommand → MoveCommand | AttackCommand
-    Expressions ActionCommand(){
+    // ActionCommand = MoveCommand | AttackCommand
+    Statement ActionCommand(){
 
         if(To.peek("move")){
             return MoveCommand();
@@ -71,70 +65,63 @@ public class GeneticCode {
         return null;
     }
 
-    // MoveCommand → move Direction
-    Expressions MoveCommand(){
-        Expressions move = Direction();
-        return move;
+    // MoveCommand = move Direction
+    Statement MoveCommand(){
+        To.consume();
+        return new MoveCommand(Direction(), unit);
+
     }
 
-    // AttackCommand → shoot Direction
-    Expressions AttackCommand(){
-        Expressions Atk = Direction();
-        return Atk;
+    // AttackCommand = shoot Direction
+    Statement AttackCommand(){
+        To.consume();
+        return new ATKCommand(Direction(), unit);
     }
 
-    // Direction → left | right | up | down | upleft | upright | downleft | downright
-    Expressions Direction(){
-        Move m = new Move();
-        Pair<String, String> p = direct.snd;
-        switch (direct.fst) {
-            case "Up" -> m.moveUp(Integer.parseInt(p.snd));
-            case "Down" -> m.moveDown(Integer.parseInt(p.snd));
-            case "Left" -> m.moveLeft(Integer.parseInt(p.snd));
-            case "Right" -> m.moveRight(Integer.parseInt(p.snd));
-            case "UpRight" -> m.moveUpRight(Integer.parseInt(p.fst), Integer.parseInt(p.snd));
-            case "UpLeft" -> m.moveUpLeft(Integer.parseInt(p.fst), Integer.parseInt(p.snd));
-            case "DownRight" -> m.moveDownRight(Integer.parseInt(p.fst), Integer.parseInt(p.snd));
-            case "DownLeft" -> m.moveDownLeft(Integer.parseInt(p.fst), Integer.parseInt(p.snd));
+    // Direction = left | right | up | down | upleft | upright | downleft | downright
+    Statement Direction(){
+
+        if(direction.contains(To.peek())){
+            return new Direction(To.peek());
         }
         return null;
     }
 
-    // BlockStatement → { Statement* }
-    Expressions BlockStatement(){
+    // BlockStatement = { Statement* }
+    Statement BlockStatement(){
         To.consume();
         return new BlockStatement(Statement());
     }
 
 
-    // IfStatement → if ( Expression ) then Statement else Statement
-    Expressions IfStatement(){
+    // IfStatement = if ( Expression ) then Statement else Statement
+    Statement IfStatement(){
 
         To.consume("if");
         To.consume("(");
         Expressions Ex = Expression();
         To.consume(")");
         To.consume("then");
-        IfStatement TrueStatement = (IfStatement) Statement();
+        Statement TrueStatement = Statement();
         To.consume("else");
         if(To.peek("if")){
             IfStatement();
         }
-        IfStatement FalseStatement = (IfStatement) Statement();
-        return new IfStatement(Ex,TrueStatement,FalseStatement);
+        Statement FalseStatement = Statement();
+        return  new IfStatement(Ex,TrueStatement,FalseStatement);
     }
 
-    // WhileStatement → while ( Expression ) Statement
-    Expressions WhileStatement(){
+    // WhileStatement = while ( Expression ) Statement
+    Statement WhileStatement(){
         To.consume("while");
         To.consume("(");
         Expressions Ex = Expression();
         To.consume(")");
-        Expressions St = Statement();
+        Statement St = Statement();
         return new WhileStatement(Ex, St);
     }
 
-    // Expression → Expression + Term | Expression - Term | Term
+    // Expression = Expression + Term | Expression - Term | Term
     Expressions Expression(){
         Expressions term = Term();
         while(To.peek("+")||To.peek("-")){
@@ -153,7 +140,7 @@ public class GeneticCode {
     }
 
 
-    // Term → Term * Factor | Term / Factor | Term % Factor | Factor
+    // Term = Term * Factor | Term / Factor | Term % Factor | Factor
     Expressions Term(){
         Expressions fa = Factor();
         while(To.peek("*") || To.peek("/")||To.peek("%")){
@@ -183,7 +170,7 @@ public class GeneticCode {
         return fa;
     }
 
-    // Factor → Power ^ Factor | Power
+    // Factor = Power ^ Factor | Power
     Expressions Factor(){
         Expressions po = Power();
         while (To.peek("^")){
@@ -198,25 +185,25 @@ public class GeneticCode {
         return po;
     }
 
-    // Power → <number> | <identifier> | ( Expression ) | SensorExpression
+    // Power = <number> | <identifier> | ( Expression ) | SensorExpression
     Expressions Power(){
         if(IsNumber(To.peek())){
             return new Number(Integer.parseInt(To.consume()));
-        }else if(!IsNumber(To.peek())){
-            // return identify
-            return null;
-        }else if(To.peek().equals("(") || To.peek().equals(")")) {
+        }else if(To.peek().equals("(") || To.peek().equals(")")){
             To.consume("(");
             Expressions Ex = Expression();
             To.consume(")");
             return Ex;
+        }else if(!IsNumber(To.peek())) {
+            // return identify
+            return null;
         }else{
             Expressions se = SensorExpression();
             return se;
         }
     }
 
-    // SensorExpression → virus | antibody | nearby Direction
+    // SensorExpression = virus | antibody | nearby Direction
     Expressions SensorExpression(){
 //        Expressions Di = Direction();
 //        if(1 == 1){
@@ -228,11 +215,23 @@ public class GeneticCode {
     }
 
     boolean IsNumber(String s) throws NumberFormatException{
-        Integer.parseInt(s);
+        if(s == null || s.equals(""))
+            return false;
+        try {
+            int a = Integer.parseInt(s);
+        }
+        catch (NumberFormatException e)
+        {
+            return false;
+        }
         return true;
     }
 
     public int getExr() {
         return Expression().eval(str);
+    }
+
+    public String test(){
+        return AttackCommand().toString();
     }
 }

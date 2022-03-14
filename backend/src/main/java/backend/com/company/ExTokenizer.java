@@ -1,17 +1,14 @@
-package com.company;
+package backend.com.company;
 
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.regex.Pattern;
 
 public class ExTokenizer implements Tokenizer{
-    Pair<String,String> list;
     private String src;
     private String next;
     private int position;
 
-    ExTokenizer(Pair<String,String> ac){
-        list = ac;
-        src = list.snd;
+    ExTokenizer(String ac){
+        src = ac;
         computeNext();
     }
 
@@ -28,7 +25,12 @@ public class ExTokenizer implements Tokenizer{
                     s.append(src.charAt(position));
                 }
             }else if(isCharacter(c)){
-                System.out.println("SyntaxError");
+                s.append(c);
+                position++;
+                for(;position<src.length()
+                        &&(Character.isDigit(src.charAt(position)) || isCharacter(src.charAt(position)));position++){  //after first character can be a-zA-z0-9_
+                    s.append(src.charAt(position));
+                }
             }else if(c=='+'||c=='-'||c=='('||c==')'||c=='*'||c=='/'||c=='%'||c=='^'){
                 s.append(c);position++;
             }else{
@@ -46,10 +48,7 @@ public class ExTokenizer implements Tokenizer{
     }
 
     private boolean isCharacter(char c){
-        if((int) c <= 65 && (int) c >= 122){
-            return true;
-        }
-        return false;
+        return Pattern.matches("[a-zA-z]",new StringBuilder(1).append(c));
     }
 
 
@@ -66,10 +65,6 @@ public class ExTokenizer implements Tokenizer{
     }
 
 
-    @Override
-    public String command() {
-        return list.fst;
-    }
 
     boolean peek(String s) {
         if(s == null){

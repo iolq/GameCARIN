@@ -1,5 +1,7 @@
 
 import styled from "styled-components";
+import Arena from "./component/arena";
+import GameController from "./component/GameController";
 import './Lobby.css';
 
 const BannerBtn = styled.a`
@@ -65,20 +67,25 @@ const Bgimage = styled.div`
     background-size: contain ;
   
     `;
-function SelectArena() {
+function SelectArena(){
+
     return (
 
         <Container>
             <Bgimage>
                 <BannerBtn href="/Dressing">back</BannerBtn>
-
                 <Button_corner>
+<<<<<<< HEAD
                     <BannerBtn href="/arena">EASY</BannerBtn>
                     <BannerBtn href="/arena">MEDIUM</BannerBtn>
                     <BannerBtn href="/arena">HARD</BannerBtn>
+=======
+                    <BannerBtn href="/component/arena">EASY</BannerBtn>
+                    <BannerBtn href="/SelectArena">MEDIUM</BannerBtn>
+                    <BannerBtn href="/SelectArena">HARD</BannerBtn>
+>>>>>>> 511682deacb31817896fd30896a136fc3c659972
                 </Button_corner>
             </Bgimage>
-
 
 
 

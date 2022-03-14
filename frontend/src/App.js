@@ -1,12 +1,19 @@
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {useEffect} from 'react'
+import GameController from './component/GameController';
 // import styled from "styled-components";
 
 
-import Dressing from './Dressing';
+import Dressing from './dressing';
 import Lobby from './Lobby';
 import SelectArena from './SelectArena';
+<<<<<<< HEAD
 import Arena from './Arena';
+=======
+import Arena from './component/arena';
+
+>>>>>>> 511682deacb31817896fd30896a136fc3c659972
 // const BannerBtn = styled.a`
 //     background: #2B39AF;
 //     display: inline-block;
@@ -30,6 +37,12 @@ import Arena from './Arena';
 
 
 function App() {
+    
+    useEffect(()=>{
+        var data = GameController.getStageGame();
+        data.then(resp=>console.log(resp)) 
+    },[])
+    
   return (
 
     <Router>
@@ -37,8 +50,12 @@ function App() {
         <Route path='/' exact element={<Lobby />} />
         <Route path='/Dressing' exact element={<Dressing />} />
         <Route path='/SelectArena' exact element={<SelectArena />} />
+<<<<<<< HEAD
         <Route path='/arena' exact element={<Arena />} />
 
+=======
+        <Route path='/component/arena' exact element={<Arena />} />
+>>>>>>> 511682deacb31817896fd30896a136fc3c659972
       </Routes>
     </Router>
 

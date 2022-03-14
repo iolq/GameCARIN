@@ -1,4 +1,4 @@
-package com.company;
+package backend.com.company;
 
 public class Pair<T1, T2> {
     protected T1 fst;

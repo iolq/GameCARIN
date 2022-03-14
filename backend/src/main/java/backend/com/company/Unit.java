@@ -1,4 +1,6 @@
-public class Antibody implements Cell{
+package backend.com.company;
+
+public class Unit implements Cell{
     @Override
     public int moveTo() {
         return 0;

@@ -1,6 +1,6 @@
-import java.beans.Expression;
+package backend.com.company;
 
-public interface Cell {
+public interface Cell extends Node{
     int Hp = 0, Armor = 0, MaxHp = 0;
 
     int moveTo();
