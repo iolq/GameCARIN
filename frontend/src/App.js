@@ -5,10 +5,10 @@ import GameController from './component/GameController';
 // import styled from "styled-components";
 
 
-import Dressing from './dressing';
+import Dressing from './Dressing';
 import Lobby from './Lobby';
 import SelectArena from './SelectArena';
-import Arena from './component/arena';
+import Arena from './Arena';
 
 // const BannerBtn = styled.a`
 //     background: #2B39AF;
@@ -46,7 +46,7 @@ function App() {
         <Route path='/' exact element={<Lobby />} />
         <Route path='/Dressing' exact element={<Dressing />} />
         <Route path='/SelectArena' exact element={<SelectArena />} />
-        <Route path='/component/arena' exact element={<Arena />} />
+        <Route path='/Arena' exact element={<Arena />} />
       </Routes>
     </Router>
 
