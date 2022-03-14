@@ -1,5 +1,6 @@
 
 import styled from "styled-components";
+import Arena from "./component/arena";
 import GameController from "./component/GameController";
 import './Lobby.css';
 
@@ -73,14 +74,12 @@ function SelectArena(){
         <Container>
             <Bgimage>
                 <BannerBtn href="/Dressing">back</BannerBtn>
-
                 <Button_corner>
-                    <BannerBtn href="/SelectArena">EASY</BannerBtn>
+                    <BannerBtn href="/component/arena">EASY</BannerBtn>
                     <BannerBtn href="/SelectArena">MEDIUM</BannerBtn>
                     <BannerBtn href="/SelectArena">HARD</BannerBtn>
                 </Button_corner>
             </Bgimage>
-
 
 
 

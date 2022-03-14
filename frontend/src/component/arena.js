@@ -1,18 +1,32 @@
 import l2FVector from './2FVector';
+import React from 'react'
+import GameController from './GameController';
 
-class Arena{
-    Stage;
-    Enemy1;
-    Enemy2;
-    Enemy3;
-    MaxUnit;
-    Scale;
+var BackgroundArea1;
 
-    constructor(stage,enm1,enm2,emn3,max,scale){
-        this.Stage = stage; this.Enemy1 = enm1; this.Enemy2 = enm3; this.MaxUnit; this.Scale = scale;
+class Arena extends React.Component{
+
+    componentDidMount(){
+
+        GameController
     }
 
-    getScale(){
-        return this.Scale;
+    componentDidUpdate(){}
+   
+    
+    fetchUp(){}
+
+
+
+    render(){
+        return(
+            <div>
+                <h1>Come</h1>
+                
+            </div>
+        );
     }
+    
 }
+
+export default Arena;

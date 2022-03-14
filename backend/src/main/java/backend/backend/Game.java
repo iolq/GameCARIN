@@ -6,7 +6,8 @@ import backend.com.company.Virus;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
-
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,21 +16,33 @@ public class Game {
     private Integer WidthScreen;
     private Integer HeightScreen;
     private Time time;
-    private Integer stage = 1;
+    private Integer stage;
     private Inventory inventory;
-    private Area arena;
+    private List<Area> arena;
+    private int cost;
 
     Game(){
+        this.arena = new ArrayList<>();
+        this.arena.add(new Area(1));
+        this.arena.add(new Area(2));
+        this.arena.add(new Area(3));
         this.time = new Time();
         this.inventory = new Inventory();
-        this.arena = new Area(WidthScreen, HeightScreen);
+
     }
 
     public void GameLoop(){
+//        while(this.arena.get(0).getValueOfAntibody() != 0 || this.arena.get(1).getValueOfAntibody() != 0
+//        || this.arena.get(2).getValueOfAntibody() != 0 ){
+//
+//            while(this.time.getTime() == 0){
+//                System.out.println("pouse");
+//            }
         while(true){
-            Update();
-            
+
         }
+
+//        }
     }
 
     public void Update(){

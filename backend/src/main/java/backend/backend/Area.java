@@ -2,18 +2,18 @@ package backend.backend;
 
 import backend.com.company.Antibody;
 import backend.com.company.Virus;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.LinkedList;
 
 import java.util.Random;
 
-@Component("Area")
+
 public class Area {
     private Integer maxWidth;
     private Integer maxHeight;
-    protected int numberofarea;
-    protected int Cost;
+    protected int NoArea;
     protected int countVirus;
     protected int countAntibody;
     private int[][] areas = new int[8][8];
@@ -23,9 +23,13 @@ public class Area {
     private int currentX;
     private int currentY;
 
-    Area(){
-        this.countAntibody = 0;
-        this.countVirus = 0;
+
+    public Area(int num){
+        this.NoArea = num;
+        this.countAntibody = 1;
+        this.countVirus = 1;
+        this.listVirus = new LinkedList<>();
+        this.listAntibody = new LinkedList<>();
     }
 
     public void ResultParse(){
@@ -60,11 +64,17 @@ public class Area {
     }
 
     public void setArea(int number){
-        this.numberofarea = number;
+        this.NoArea = number;
     }
 
     public int getArea(){
-        return this.numberofarea;
+        return this.NoArea;
     }
 
+    public int getValueOfAntibody(){
+        return this.countAntibody;
+    }
+    public int getValueOfVirus(){
+        return this.countVirus;
+    }
 }

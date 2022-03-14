@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(path = "/Area")
 public class AreaConnected {
-    Area a51 = new Area();
+    Area a51 = new Area(0);
     @CrossOrigin
     @GetMapping(path="/getArea")
     public Area getArea(){
