@@ -25,4 +25,8 @@ public class IfStatement implements Statement{
             False.eval();
         }
     }
+    @Override
+    public Pair<Integer, Integer> evalPair() {
+        return null;
+    }
 }

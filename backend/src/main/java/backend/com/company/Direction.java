@@ -10,7 +10,9 @@ public class Direction implements Statement{
     public void eval() {
 
     }
-    public Pair<Integer,Integer> num(){
+
+    @Override
+    public Pair<Integer, Integer> evalPair() {
         Pair<Integer,Integer> ans = new Pair<>(0,0);
         switch (move) {
             case "Up" -> ans = new Pair<>(0,60);
@@ -24,4 +26,5 @@ public class Direction implements Statement{
         }
         return ans;
     }
+
 }

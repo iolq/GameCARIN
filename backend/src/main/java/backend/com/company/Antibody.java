@@ -2,15 +2,16 @@ package backend.com.company;
 
 public class Antibody implements Cell {
 
-    private int xposition;
-    private int yposition;
+    private int xPosition;
+    private int yPosition;
     private int HandleCost;
 
     public Antibody(){};
 
     @Override
-    public int moveTo() {
-        return 0;
+    public void moveTo(int x, int y) {
+        xPosition += x;
+        yPosition += y;
     }
 
     @Override
@@ -43,7 +44,7 @@ public class Antibody implements Cell {
     }
 
     public void setPosition(int xpos,int ypos){
-        this.xposition = xpos; this.yposition = ypos;
+        this.xPosition = xpos; this.yPosition = ypos;
     }
 
     public int HandleCosts(){

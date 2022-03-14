@@ -3,14 +3,15 @@ package backend.com.company;
 public class Virus implements Cell {
 
     private int CostReward;
-    private int xposition;
-    private int yposition;
+    private int xPosition;
+    private int yPosition;
 
     public Virus(){};
 
     @Override
-    public int moveTo() {
-        return 0;
+    public void moveTo(int x, int y) {
+        xPosition += x;
+        yPosition += y;
     }
 
     @Override
@@ -47,6 +48,7 @@ public class Virus implements Cell {
     }
 
     public void setPosition(int xpos,int ypos){
-        this.xposition = xpos; this.yposition = ypos;
+        this.xPosition = xpos; this.yPosition = ypos;
     }
+    
 }
