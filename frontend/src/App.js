@@ -8,7 +8,8 @@ import GameController from './component/GameController';
 import Dressing from './dressing';
 import Lobby from './Lobby';
 import SelectArena from './SelectArena';
-import Arena from './Arena';
+import Arena from './component/arena';
+
 
 // const BannerBtn = styled.a`
 //     background: #2B39AF;
@@ -34,10 +35,7 @@ import Arena from './Arena';
 
 function App() {
 
-  useEffect(() => {
-    var data = GameController.getStageGame();
-    data.then(resp => console.log(resp))
-  }, [])
+
 
   return (
 
@@ -47,6 +45,7 @@ function App() {
         <Route path='/Dressing' exact element={<Dressing />} />
         <Route path='/SelectArena' exact element={<SelectArena />} />
         <Route path='/Arena' exact element={<Arena />} />
+
       </Routes>
     </Router>
 
