@@ -11,12 +11,12 @@ public class GeneticCode {
     private final Set<String> direction = new HashSet<>(List.of(list));
     private Unit unit;
 
-    GeneticCode(String str){
+    public GeneticCode(String str){
         To = new ExTokenizer(str);
     }
 
     // Program = Statement+
-    Statement Program(){
+    public Statement Program(){
         return  Statement();
     }
 

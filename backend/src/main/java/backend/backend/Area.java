@@ -1,7 +1,6 @@
 package backend.backend;
 
-import backend.com.company.Antibody;
-import backend.com.company.Virus;
+import backend.com.company.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -33,7 +32,7 @@ public class Area {
     }
 
     public void ResultParse(){
-        
+
     }
     public void spawnAntibody(Antibody anti){
         this.listAntibody.add(anti);

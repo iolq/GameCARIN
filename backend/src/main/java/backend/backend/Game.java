@@ -28,21 +28,22 @@ public class Game {
         this.arena.add(new Area(3));
         this.time = new Time();
         this.inventory = new Inventory();
+        this.HeightScreen = 1090;
+        this.WidthScreen = 1920;
 
     }
 
     public void GameLoop(){
-//        while(this.arena.get(0).getValueOfAntibody() != 0 || this.arena.get(1).getValueOfAntibody() != 0
-//        || this.arena.get(2).getValueOfAntibody() != 0 ){
-//
-//            while(this.time.getTime() == 0){
-//                System.out.println("pouse");
-//            }
-        while(true){
+        while(this.arena.get(0).getValueOfAntibody() != 0 || this.arena.get(1).getValueOfAntibody() != 0
+        || this.arena.get(2).getValueOfAntibody() != 0 ){
+
+            while(this.time.getTime() == 0){
+                System.out.println("pouse");
+            }
+
+            this.arena.get(0).ResultParse();
 
         }
-
-//        }
     }
 
     public void Update(){
@@ -64,5 +65,12 @@ public class Game {
 
     public int getGameStage(){
         return this.stage;
+    }
+
+    public List<Integer> getScreen(){
+        List<Integer> sc = new ArrayList<>();
+        sc.add(this.WidthScreen);
+        sc.add(this.HeightScreen);
+        return sc;
     }
 }
