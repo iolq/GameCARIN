@@ -5,7 +5,7 @@ import GameController from './component/GameController';
 // import styled from "styled-components";
 
 
-import Dressing from './Dressing';
+import Dressing from './dressing';
 import Lobby from './Lobby';
 import SelectArena from './SelectArena';
 import Arena from './Arena';
