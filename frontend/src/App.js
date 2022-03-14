@@ -1,6 +1,6 @@
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import {useEffect} from 'react'
+import { useEffect } from 'react'
 import GameController from './component/GameController';
 // import styled from "styled-components";
 
@@ -33,12 +33,12 @@ import Arena from './component/arena';
 
 
 function App() {
-    
-    useEffect(()=>{
-        var data = GameController.getStageGame();
-        data.then(resp=>console.log(resp)) 
-    },[])
-    
+
+  useEffect(() => {
+    var data = GameController.getStageGame();
+    data.then(resp => console.log(resp))
+  }, [])
+
   return (
 
     <Router>
