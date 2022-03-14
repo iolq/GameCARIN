@@ -1,12 +1,17 @@
-package backend.com.company;
+package main.java.backend.com.company;
 
 public class MoveCommand implements Statement{
     Statement direction;
-    Unit unit;
+    Cell unit;
 
-    MoveCommand(Statement direction, Unit unit){
+    MoveCommand(Statement direction, Cell unit){
         this.direction = direction;
         this.unit = unit;
+    }
+
+    @Override
+    public Pair<Integer, Integer> evalPair() {
+        return null;
     }
 
     @Override

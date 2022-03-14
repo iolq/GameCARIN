@@ -1,4 +1,4 @@
-package backend.com.company;
+package main.java.backend.com.company;
 
 import java.util.*;
 
@@ -9,16 +9,18 @@ public class GeneticCode {
     private Binary br;
     private final String[] list = {"left", "right", "up", "down", "upleft", "upright", "downleft", "downright"};
     private final Set<String> direction = new HashSet<>(List.of(list));
-    private Unit unit;
+    private Cell antibody, virus;
 
-    GeneticCode(String str){
+    public GeneticCode(Cell antibody,Cell Virus,String str){
+        this.antibody = antibody;
+        this.virus = Virus;
         To = new ExTokenizer(str);
     }
 
     // Program = Statement+
-    Statement Program(){
-        return  Statement();
-    }
+//    Statement Program(){
+//        return  Statement();
+//    }
 
     // Statement = Command | BlockStatement | IfStatement | WhileStatement
     Statement Statement(){
@@ -68,14 +70,14 @@ public class GeneticCode {
     // MoveCommand = move Direction
     Statement MoveCommand(){
         To.consume();
-        return new MoveCommand(Direction(), unit);
+        return new MoveCommand(Direction(), antibody);
 
     }
 
     // AttackCommand = shoot Direction
     Statement AttackCommand(){
         To.consume();
-        return new ATKCommand(Direction(), unit);
+        return new ATKCommand(Direction(), antibody,virus);
     }
 
     // Direction = left | right | up | down | upleft | upright | downleft | downright
