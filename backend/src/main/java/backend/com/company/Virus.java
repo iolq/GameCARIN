@@ -10,6 +10,7 @@ public class Virus implements Cell {
     private int HP;
     private int shoot = 120;
     private int Armor,Atk,cooldown;
+    private String t = "Virus";
 
     public Virus(){
         Random rand = new Random();
@@ -61,6 +62,16 @@ public class Virus implements Cell {
     @Override
     public int shootField() {
         return shoot;
+    }
+
+    @Override
+    public void receive(int heal) {
+        
+    }
+
+    @Override
+    public String typeCell() {
+        return t;
     }
     
 }

@@ -11,6 +11,7 @@ public class Antibody implements Cell {
     private int HP;
     private int shoot = 180;
     private int Armor,Atk,cooldown;
+    private String t = "Antibody";
 
     public Antibody(){
         Random rand = new Random();
@@ -48,6 +49,7 @@ public class Antibody implements Cell {
         return this.HandleCost;
     }
 
+    @Override
     public void receive(int heal){
         HP += heal;
     }
@@ -65,6 +67,11 @@ public class Antibody implements Cell {
     @Override
     public int shootField() {
         return shoot;
+    }
+
+    @Override
+    public String typeCell() {
+        return t;
     }
 }
 

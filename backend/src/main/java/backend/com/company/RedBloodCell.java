@@ -10,6 +10,7 @@ public class RedBloodCell implements Cell{
     private int HP;
     private int HealField = 120;
     private int Armor,Heal,cooldown;
+    private String t = "Healing";
 
     RedBloodCell(){
         Random rand = new Random();
@@ -27,7 +28,7 @@ public class RedBloodCell implements Cell{
 
     @Override
     public int ATK(){
-        return 0;
+        return Heal;
     }
 
     @Override
@@ -35,9 +36,9 @@ public class RedBloodCell implements Cell{
         HP =- dmg-Armor;
     }
 
-    public int Heal(){
-        return Heal;
-    }
+    // public int Heal(){
+    //     return Heal;
+    // }
 
     @Override
     public int xPosition(){
@@ -52,5 +53,15 @@ public class RedBloodCell implements Cell{
     @Override
     public int shootField() {
         return HealField;
+    }
+
+    @Override
+    public void receive(int heal) {
+        
+    }
+
+    @Override
+    public String typeCell() {
+        return t;
     }
 }

@@ -11,6 +11,7 @@ public class WhiteBloodCell implements Cell{
     private int Armor = 0;
     private int Atk = 0;
     private int cooldown = 0;
+    private String t = "White";
 
     WhiteBloodCell(){
         Random rand = new Random();
@@ -36,6 +37,7 @@ public class WhiteBloodCell implements Cell{
         HP =- dmg;
     }
 
+    @Override
     public void receive(int heal){
         HP += heal;
     }
@@ -53,5 +55,10 @@ public class WhiteBloodCell implements Cell{
     @Override
     public int shootField() {
         return shoot;
+    }
+
+    @Override
+    public String typeCell() {
+        return t;
     }
 }

@@ -9,6 +9,7 @@ public class CellEat implements Cell{
     private int HP;
     private int shoot = 60;
     private int Armor,Atk;
+    private String t = "CellEat";
 
     CellEat(){
         Random rand = new Random();
@@ -37,6 +38,7 @@ public class CellEat implements Cell{
         HP = 0;
     }
     
+    @Override
     public void receive(int heal){
         HP += heal;
     }
@@ -54,5 +56,10 @@ public class CellEat implements Cell{
     @Override
     public int shootField() {
         return shoot;
+    }
+
+    @Override
+    public String typeCell() {
+        return t;
     }
 }

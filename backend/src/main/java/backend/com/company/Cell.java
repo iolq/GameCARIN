@@ -13,4 +13,8 @@ public interface Cell extends Node{
     int yPosition();
 
     int shootField();
+
+    void receive(int heal);
+
+    String typeCell();
 }
