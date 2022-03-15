@@ -13,7 +13,7 @@ class GameController{
     static async getStageGame(){
         var gameStage = await axios.get(Config.url + "Game/getStage")
 
-        return gameStage.data.gameStage;
+        return gameStage.data;
     } 
 
     static async setStageGame(gameStage){

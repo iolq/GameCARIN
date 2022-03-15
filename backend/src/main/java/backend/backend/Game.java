@@ -7,10 +7,11 @@ import java.util.List;
 import backend.com.company.Antibody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
-@Component("Game")
-public class Game {
+@Component
+public class Game implements Runnable {
     private Integer WidthScreen;
     private Integer HeightScreen;
     private Time time;
@@ -18,10 +19,10 @@ public class Game {
     private Inventory inventory;
     protected List<Area> arena;
     private int cost;
-    private int countAntibody;
-    private List<Antibody> area1;
 
-    Game(){
+    private List<Antibody> listAntArea1 = new ArrayList<>();
+
+    public Game(){
         this.arena = new ArrayList<>();
         this.arena.add(new Area(1));
         this.arena.add(new Area(2));
@@ -30,36 +31,44 @@ public class Game {
         this.inventory = new Inventory();
         this.HeightScreen = 1090;
         this.WidthScreen = 1920;
-        this.area1 = new ArrayList<>();
+        Antibody name = new Antibody();
+        this.listAntArea1.add(name);
     }
 
+
     public void GameLoop(){
-        Antibody name = new Antibody();
-        spawnAntibody(name);
         init();
         while(this.arena.get(0).getValueOfAntibody() != 0 || this.arena.get(1).getValueOfAntibody() != 0
-        || this.arena.get(2).getValueOfAntibody() != 0 ){
+        || this.arena.get(2).getValueOfAntibody() != 0 ) {
 
-            while(this.time.getTime() == 0){
+            while (this.time.getTime() == 0) {
                 System.out.println("pouse");
             }
+            try{
+                Thread.sleep(5000);
+                Antibody cell = new Antibody();
+                this.listAntArea1.add(cell);
+            }catch(InterruptedException e){}
+
 
         }
     }
+
     public void init(){
-        this.arena.get(0).countAntibody=1;
+        this.arena.get(0).countAntibody = 1;
+
     }
 
     //ตั้งค่าเริ่มต้น
-    public static void main(String[] args){
-        
-        Game start = new Game();
-        start.GameLoop();
-
-    }
+//    public static void main(String[] args){
+//
+//        Game start = new Game();
+//        start.GameLoop();
+//
+//    }
 
     public void setGameStage(int number){
-        System.out.println(number);
+
         this.stage = number;
     }
 
@@ -78,12 +87,16 @@ public class Game {
         return sc;
     }
 
-    public List<Antibody> getAntibodyInArea1(){
-        return this.area1;
+    public List<Antibody> getListAntArea1(){
+        return this.listAntArea1;
     }
 
-    public void spawnAntibody(Antibody ant){
-        this.area1.add(ant);
-        this.countAntibody++;
+    public Time getTimes(){
+        return this.time;
+    }
+
+    @Override
+    public void run() {
+        GameLoop();
     }
 }
