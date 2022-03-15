@@ -3,14 +3,13 @@ import Config from "./Config";
 
 
 class GameController{
-    static getArea(numberofstage){
-        const UrlofArea = Config.url + "Area/getArea/" + {numberofstage}
-        if(UrlofArea){
-            return {
-                virus:{},
-                
-            }
-        }
+    static async getArea(numberofstage){
+        const UrlofArea = Config.url + "Area/getArea" + numberofstage;
+        
+
+        console.log(UrlofArea)
+        var area = await axios.get(UrlofArea)
+        return area.data;
     }
 
     static async getStageGame(){

@@ -39,10 +39,7 @@ const Container = styled.div`
 `
 function Arena() {
 
-    const [stage,setStage] = useState()
-    useEffect(()=>{
-
-    },[])
+    
 
     return (
 
@@ -50,8 +47,6 @@ function Arena() {
         <Container>
             <Bgimage>
                 <BannerBtn href="/SelectArena">back</BannerBtn>
-
-
 
             </Bgimage>
         </Container>
