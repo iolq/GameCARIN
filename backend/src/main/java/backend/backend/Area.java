@@ -36,50 +36,99 @@ public class Area {
         //Antibody version
         //Anti
         for(int i = 0; i < listAntibody.size(); ++i){
-            //virus
-            for(int j = 0; j < listVirus.size(); ++j){
 
-                Cell anti = listAntibody.get(i);
-                Cell virus = listVirus.get(j);
-                //shoot
-                if(Math.abs(listAntibody.get(i).xPosition() - listVirus.get(j).xPosition()) <= listAntibody.get(i).shootField() && Math.abs(listAntibody.get(i).yPosition() - listVirus.get(j).yPosition()) <= listAntibody.get(i).shootField()){
-                    gr = new GeneticCode(anti, virus, "ATK(A)");
-                    gr.call();
-                } //move
-                else{
-                    int xAnti = listAntibody.get(i).xPosition();
-                    int yAnti = listAntibody.get(i).yPosition();
-                    int xVirus = listVirus.get(j).xPosition();
-                    int yVirus = listVirus.get(j).yPosition();
+            if(listAntibody.get(i).typeCell().equals("Healing")){
+                for(int j = 0; j < listAntibody.size(); ++j){
+                    if(i != j){
+                        Cell healCell = listAntibody.get(i);
+                        Cell cell = listAntibody.get(j);
 
-                    if(xAnti == xVirus && yAnti < yVirus){
-                        gr = new GeneticCode(anti, "Up");
-                        
-                    }else if(xAnti < xVirus && yAnti < yVirus){
-                        gr = new GeneticCode(anti, "UpRight");
+                        //Heal
+                        if(Math.abs(listAntibody.get(i).xPosition() - listAntibody.get(j).xPosition()) <= listAntibody.get(i).shootField() && Math.abs(listAntibody.get(i).yPosition() - listAntibody.get(j).yPosition()) <= listAntibody.get(i).shootField()){
+                            gr = new GeneticCode(healCell, cell, "Heal(H)");
+                            gr.call();
+                        }else{
+                            int xHeal = listAntibody.get(i).xPosition();
+                            int yHeal = listAntibody.get(i).yPosition();
+                            int xAnti = listAntibody.get(j).xPosition();
+                            int yAnti = listAntibody.get(j).yPosition();
+        
+                            if(xHeal == xAnti && yHeal < yAnti){
+                                gr = new GeneticCode(healCell, "Up");
+                                
+                            }else if(xHeal < xAnti && yHeal < yAnti){
+                                gr = new GeneticCode(healCell, "UpRight");
+        
+                            }else if(xHeal < xAnti && yHeal == yAnti){
+                                gr = new GeneticCode(healCell, "Right");
+        
+                            }else if(xHeal < xAnti && yHeal > yAnti){
+                                gr = new GeneticCode(healCell, "DownRight");
+        
+                            }else if(xHeal == xAnti && yHeal > yAnti){
+                                gr = new GeneticCode(healCell, "Down");
+        
+                            }else if(xHeal > xAnti && yHeal > yAnti){
+                                gr = new GeneticCode(healCell, "DownLeft");
+                                
+                            }else if(xHeal > xAnti && yHeal == yAnti){
+                                gr = new GeneticCode(healCell, "Left");
+        
+                            }else if(xHeal > xAnti && yHeal < yAnti){
+                                gr = new GeneticCode(healCell, "UpLeft");
+        
+                            }
+                        }
+                    }
+                }
+            }else{
+                //virus
+                for(int j = 0; j < listVirus.size(); ++j){
 
-                    }else if(xAnti < xVirus && yAnti == yVirus){
-                        gr = new GeneticCode(anti, "Right");
-
-                    }else if(xAnti < xVirus && yAnti > yVirus){
-                        gr = new GeneticCode(anti, "DownRight");
-
-                    }else if(xAnti == xVirus && yAnti > yVirus){
-                        gr = new GeneticCode(anti, "Down");
-
-                    }else if(xAnti > xVirus && yAnti > yVirus){
-                        gr = new GeneticCode(anti, "DownLeft");
-                        
-                    }else if(xAnti > xVirus && yAnti == yVirus){
-                        gr = new GeneticCode(anti, "Left");
-
-                    }else if(xAnti > xVirus && yAnti < yVirus){
-                        gr = new GeneticCode(anti, "UpLeft");
-
+                    Cell anti = listAntibody.get(i);
+                    Cell virus = listVirus.get(j);
+                    //shoot
+                    if(Math.abs(listAntibody.get(i).xPosition() - listVirus.get(j).xPosition()) <= listAntibody.get(i).shootField() && Math.abs(listAntibody.get(i).yPosition() - listVirus.get(j).yPosition()) <= listAntibody.get(i).shootField()){
+                        gr = new GeneticCode(anti, virus, "ATK(A)");
+                        gr.call();
+                    } //move
+                    else{
+                        int xAnti = listAntibody.get(i).xPosition();
+                        int yAnti = listAntibody.get(i).yPosition();
+                        int xVirus = listVirus.get(j).xPosition();
+                        int yVirus = listVirus.get(j).yPosition();
+    
+                        if(xAnti == xVirus && yAnti < yVirus){
+                            gr = new GeneticCode(anti, "Up");
+                            
+                        }else if(xAnti < xVirus && yAnti < yVirus){
+                            gr = new GeneticCode(anti, "UpRight");
+    
+                        }else if(xAnti < xVirus && yAnti == yVirus){
+                            gr = new GeneticCode(anti, "Right");
+    
+                        }else if(xAnti < xVirus && yAnti > yVirus){
+                            gr = new GeneticCode(anti, "DownRight");
+    
+                        }else if(xAnti == xVirus && yAnti > yVirus){
+                            gr = new GeneticCode(anti, "Down");
+    
+                        }else if(xAnti > xVirus && yAnti > yVirus){
+                            gr = new GeneticCode(anti, "DownLeft");
+                            
+                        }else if(xAnti > xVirus && yAnti == yVirus){
+                            gr = new GeneticCode(anti, "Left");
+    
+                        }else if(xAnti > xVirus && yAnti < yVirus){
+                            gr = new GeneticCode(anti, "UpLeft");
+    
+                        }
                     }
                 }
             }
         }
+        
+            
 
         //virus version
         //virus
