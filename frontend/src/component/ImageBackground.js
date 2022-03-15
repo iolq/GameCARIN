@@ -27,7 +27,25 @@ class ImgBackground{
         this.context.drawImage(this.Image,this.positionX,this.positionY,this.width,this.height)
     }
 
-    
+    update(){
+        this.draw();
+    }
+
+    getPositionX(){
+        return this.positionX;
+    }
+
+    getPositionY(){
+        return this.positionY;
+    }
+
+    getWidth(){
+        return this.width;
+    }
+
+    getHeight(){
+        return this.height;
+    }
 
 }
 

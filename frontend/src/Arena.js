@@ -48,8 +48,6 @@ function Arena() {
             <Bgimage>
                 <BannerBtn href="/SelectArena">back</BannerBtn>
 
-
-
             </Bgimage>
         </Container>
 

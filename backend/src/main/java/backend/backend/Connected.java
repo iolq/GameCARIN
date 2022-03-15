@@ -16,7 +16,7 @@ public class Connected {
     @CrossOrigin
     @GetMapping(path = "/getStage")
     public Game getStage(){
-        return game;
+        return this.game;
     }
 
 

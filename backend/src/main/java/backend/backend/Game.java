@@ -1,14 +1,10 @@
 package backend.backend;
 
-import backend.com.company.Antibody;
-import backend.com.company.Virus;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import backend.com.company.Antibody;
 import org.springframework.stereotype.Component;
 
 @Component("Game")
@@ -16,7 +12,7 @@ public class Game {
     private Integer WidthScreen;
     private Integer HeightScreen;
     private Time time;
-    private Integer stage;
+    private Integer stage = 1;
     private Inventory inventory;
     private List<Area> arena;
     private int cost;
@@ -34,6 +30,8 @@ public class Game {
     }
 
     public void GameLoop(){
+        init();
+        System.out.println(this.arena.get(0).countVirus);
         while(this.arena.get(0).getValueOfAntibody() != 0 || this.arena.get(1).getValueOfAntibody() != 0
         || this.arena.get(2).getValueOfAntibody() != 0 ){
 
@@ -44,8 +42,9 @@ public class Game {
         }
     }
 
-    public void Update(){
-
+    public void init(){
+        Antibody name = new Antibody();
+        this.arena.get(1).spawnAntibody(name);
     }
 
     //ตั้งค่าเริ่มต้น
@@ -63,6 +62,10 @@ public class Game {
 
     public int getGameStage(){
         return this.stage;
+    }
+
+    public List<Area> getAreas(){
+        return this.arena;
     }
 
     public List<Integer> getScreen(){

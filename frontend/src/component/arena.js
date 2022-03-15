@@ -1,34 +1,50 @@
 
 import React from 'react';
-
 import Config from './Config';
+
+
+import GameController from './GameController';
 import ImgBackground from './ImageBackground';
 
 
-var BackgroundArea1 = Config.Background;
-
+var BackgroundArea1 = Config.background1;
+var imbackground;
+var gameStage;
+var time;
+var areas;
 class Arena extends React.Component {
 
-    componentWillUnmount(){
+    count
 
+    componentWillUnmount(){
+        console.warn("componentWillUnmount")
+        
     }
 
 
     componentDidMount() {
-
+        this.count = this.setState({time:Date.now})
         this.init();
         this.fetchUp();
-        this.updateUp();
         
+        this.updateUp();
     }
 
     componentDidUpdate() {
-
+        this.updateUp();
+        this.drawOfset();
      }
 
 
     fetchUp() {
+        GameController.getStageGame().then(data=>gameStage = data)
 
+        for(var i=0;i<3;i++){
+            GameController.getArea(i+1).then(data=>{
+                areas[i] = data.data;
+                console.log(areas[i])
+            })
+        }
      }
 
     updateUp(){
@@ -36,19 +52,21 @@ class Arena extends React.Component {
     }
 
     init(){
-
         const canvas = document.querySelector('canvas')
         canvas.width = 1920;
         canvas.height = 1080;
-        var imbackground = new ImgBackground(BackgroundArea1,0,0,1920,1080)
+        imbackground = new ImgBackground(BackgroundArea1,0,0,800,600)
+        
+    }
+
+    drawOfset(){
         imbackground.draw()
     }
 
     render() {
         return (
             <canvas 
-                width={800}
-                height={600}
+                
             />
         );
     }
