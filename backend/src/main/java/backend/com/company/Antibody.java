@@ -1,5 +1,7 @@
 package backend.com.company;
 
+import java.util.Random;
+
 public class Antibody implements Cell {
 
     private int xPosition;
@@ -7,9 +9,15 @@ public class Antibody implements Cell {
     private int HandleCost;
     private int dmg;
     private int HP;
+    private int shoot = 180;
+    private int Armor,Atk,cooldown;
 
     public Antibody(){
-        HP = 500;
+        Random rand = new Random();
+        HP = rand.nextInt(10)+60;
+        Armor = rand.nextInt(5)+5;
+        Atk = rand.nextInt(20)+30;
+        cooldown = 4;
     };
 
     @Override
@@ -19,33 +27,8 @@ public class Antibody implements Cell {
     }
 
     @Override
-    public int shootTo() {
-        return 0;
-    }
-
-    @Override
-    public int Armor() {
-        return 0;
-    }
-
-    @Override
-    public int Hp() {
-        return 0;
-    }
-
-    @Override
-    public int DeHp() {
-        return 0;
-    }
-
-    @Override
-    public int DeArmor() {
-        return 0;
-    }
-
-    @Override
     public int ATK(){
-        return 0;
+        return Atk;
     }
 
     @Override
@@ -64,4 +47,9 @@ public class Antibody implements Cell {
     public int HandleCosts(){
         return this.HandleCost;
     }
+
+    public void receive(int heal){
+        HP += heal;
+    }
 }
+

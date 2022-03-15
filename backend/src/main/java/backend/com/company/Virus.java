@@ -1,13 +1,23 @@
 package backend.com.company;
 
+import java.util.Random;
+
 public class Virus implements Cell {
 
     private int CostReward;
     private int xPosition;
     private int yPosition;
     private int HP;
+    private int shoot = 120;
+    private int Armor,Atk,cooldown;
 
-    public Virus(){};
+    public Virus(){
+        Random rand = new Random();
+        HP = rand.nextInt(10)+150;
+        Armor = rand.nextInt(5)+25;
+        Atk = rand.nextInt(10)+27;
+        cooldown = 2;
+    };
 
     @Override
     public void moveTo(int x, int y) {
@@ -15,30 +25,6 @@ public class Virus implements Cell {
         yPosition += y;
     }
 
-    @Override
-    public int shootTo() {
-        return 0;
-    }
-
-    @Override
-    public int Armor() {
-        return 0;
-    }
-
-    @Override
-    public int Hp() {
-        return 0;
-    }
-
-    @Override
-    public int DeHp() {
-        return 0;
-    }
-
-    @Override
-    public int DeArmor() {
-        return 0;
-    }
 
     public void setReward(int num){
         this.CostReward = num;
@@ -54,12 +40,12 @@ public class Virus implements Cell {
 
     @Override
     public int ATK(){
-        return 0;
+        return Atk;
     }
 
     @Override
     public void dmg(int dmg){
-        HP =- dmg;
+        HP =- dmg-Armor;
     }
     
 }

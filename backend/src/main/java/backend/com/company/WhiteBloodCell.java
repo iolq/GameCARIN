@@ -1,10 +1,24 @@
 package backend.com.company;
 
+import java.util.Random;
+
 public class WhiteBloodCell implements Cell{
     private int CostReward;
     private int xPosition;
     private int yPosition;
     private int HP;
+    private int shoot = 120;
+    private int Armor = 0;
+    private int Atk = 0;
+    private int cooldown = 0;
+
+    WhiteBloodCell(){
+        Random rand = new Random();
+        HP = rand.nextInt(10)+120;
+        Armor = rand.nextInt(10)+20;
+        Atk = rand.nextInt(10)+10;
+        cooldown = 2;
+    }
     
     @Override
     public void moveTo(int x, int y) {
@@ -12,30 +26,6 @@ public class WhiteBloodCell implements Cell{
         yPosition += y;
     }
 
-    @Override
-    public int shootTo() {
-        return 0;
-    }
-
-    @Override
-    public int Armor() {
-        return 0;
-    }
-
-    @Override
-    public int Hp() {
-        return 0;
-    }
-
-    @Override
-    public int DeHp() {
-        return 0;
-    }
-
-    @Override
-    public int DeArmor() {
-        return 0;
-    }
     @Override
     public int ATK(){
         return 0;
@@ -46,7 +36,7 @@ public class WhiteBloodCell implements Cell{
         HP =- dmg;
     }
 
-    public int Heal(){
-        return 0;
+    public void receive(int heal){
+        HP += heal;
     }
 }
