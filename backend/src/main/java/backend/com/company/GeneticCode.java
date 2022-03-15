@@ -44,7 +44,7 @@ public class GeneticCode {
     // Command = AssignmentStatement | ActionCommand
     Statement Command(){
 
-        if(direction.contains(To.peek()) || To.peek("atk") || To.peek("Heal")){
+        if(direction.contains(To.peek()) || To.peek("ATK") || To.peek("Heal")){
             return ActionCommand();
         }else{
             return AssignmentStatement();
@@ -65,7 +65,7 @@ public class GeneticCode {
 
         if(direction.contains(To.peek())){
             return MoveCommand();
-        }else if(To.peek("atk") || To.peek("Heal")){
+        }else if(To.peek("ATK") || To.peek("Heal")){
             return AttackCommand();
         }
         return null;
