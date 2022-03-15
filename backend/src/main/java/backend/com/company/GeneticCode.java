@@ -7,13 +7,18 @@ public class GeneticCode {
     int result = 0;
     private Map<String,Integer> str = new HashMap();
     private Binary br;
-    private final String[] list = {"left", "right", "up", "down", "upleft", "upright", "downleft", "downright"};
+    private final String[] list = {"left", "right", "up", "down", "UpLeft", "UpRight", "DownLeft", "DownRight"};
     private final Set<String> direction = new HashSet<>(List.of(list));
     private Cell antibody, virus;
 
     public GeneticCode(Cell antibody,Cell virus,String str){
         this.antibody = antibody;
         this.virus = virus;
+        To = new ExTokenizer(str);
+    }
+
+    public GeneticCode(Cell antibody,String str){
+        this.antibody = antibody;
         To = new ExTokenizer(str);
     }
 
@@ -39,7 +44,7 @@ public class GeneticCode {
     // Command = AssignmentStatement | ActionCommand
     Statement Command(){
 
-        if(To.peek("move") || To.peek("atk")){
+        if(direction.contains(To.peek()) || To.peek("atk")){
             return ActionCommand();
         }else{
             return AssignmentStatement();
@@ -58,7 +63,7 @@ public class GeneticCode {
     // ActionCommand = MoveCommand | AttackCommand
     Statement ActionCommand(){
 
-        if(To.peek("move")){
+        if(direction.contains(To.peek())){
             return MoveCommand();
         }else if(To.peek("atk")){
             return AttackCommand();
@@ -68,7 +73,6 @@ public class GeneticCode {
 
     // MoveCommand = move Direction
     Statement MoveCommand(){
-        To.consume();
         return new MoveCommand(Direction(), antibody);
 
     }
@@ -234,5 +238,9 @@ public class GeneticCode {
 
     public String test(){
         return AttackCommand().toString();
+    }
+
+    public void call(){
+        Statement();
     }
 }
