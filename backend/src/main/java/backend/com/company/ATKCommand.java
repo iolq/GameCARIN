@@ -20,6 +20,8 @@ public class ATKCommand implements Statement{
             virus.dmg(antibody.ATK());
         }else if(type.contains("V")){
             antibody.dmg(virus.ATK());
+        }else if(type.contains("H")){
+            virus.receive(antibody.ATK());
         }
     }
 
