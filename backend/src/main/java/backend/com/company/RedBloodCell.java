@@ -38,4 +38,19 @@ public class RedBloodCell implements Cell{
     public int Heal(){
         return Heal;
     }
+
+    @Override
+    public int xPosition(){
+        return xPosition;
+    }
+
+    @Override
+    public int yPosition(){
+        return yPosition;
+    }
+
+    @Override
+    public int shootField() {
+        return HealField;
+    }
 }

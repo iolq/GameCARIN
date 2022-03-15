@@ -41,4 +41,18 @@ public class CellEat implements Cell{
         HP += heal;
     }
     
+    @Override
+    public int xPosition(){
+        return xPosition;
+    }
+
+    @Override
+    public int yPosition(){
+        return yPosition;
+    }
+
+    @Override
+    public int shootField() {
+        return shoot;
+    }
 }

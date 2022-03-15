@@ -47,5 +47,20 @@ public class Virus implements Cell {
     public void dmg(int dmg){
         HP =- dmg-Armor;
     }
+
+    @Override
+    public int xPosition(){
+        return xPosition;
+    }
+
+    @Override
+    public int yPosition(){
+        return yPosition;
+    }
+
+    @Override
+    public int shootField() {
+        return shoot;
+    }
     
 }

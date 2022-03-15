@@ -7,4 +7,10 @@ public interface Cell extends Node{
     int ATK();
 
     void dmg(int dmg);
+
+    int xPosition();
+    
+    int yPosition();
+
+    int shootField();
 }
