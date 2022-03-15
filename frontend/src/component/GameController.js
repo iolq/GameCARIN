@@ -6,8 +6,6 @@ class GameController{
     static async getArea(numberofstage){
         const UrlofArea = Config.url + "Area/getArea" + numberofstage;
         
-
-        console.log(UrlofArea)
         var area = await axios.get(UrlofArea)
         return area.data;
     }

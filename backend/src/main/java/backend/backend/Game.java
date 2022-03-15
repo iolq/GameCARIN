@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import backend.com.company.Antibody;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 @Component("Game")
@@ -14,8 +16,10 @@ public class Game {
     private Time time;
     private Integer stage = 1;
     private Inventory inventory;
-    private List<Area> arena;
+    protected List<Area> arena;
     private int cost;
+    private int countAntibody;
+    private List<Antibody> area1;
 
     Game(){
         this.arena = new ArrayList<>();
@@ -26,12 +30,13 @@ public class Game {
         this.inventory = new Inventory();
         this.HeightScreen = 1090;
         this.WidthScreen = 1920;
-
+        this.area1 = new ArrayList<>();
     }
 
     public void GameLoop(){
+        Antibody name = new Antibody();
+        spawnAntibody(name);
         init();
-        System.out.println(this.arena.get(0).countVirus);
         while(this.arena.get(0).getValueOfAntibody() != 0 || this.arena.get(1).getValueOfAntibody() != 0
         || this.arena.get(2).getValueOfAntibody() != 0 ){
 
@@ -41,10 +46,8 @@ public class Game {
 
         }
     }
-
     public void init(){
-        Antibody name = new Antibody();
-        this.arena.get(1).spawnAntibody(name);
+        this.arena.get(0).countAntibody=1;
     }
 
     //ตั้งค่าเริ่มต้น
@@ -73,5 +76,14 @@ public class Game {
         sc.add(this.WidthScreen);
         sc.add(this.HeightScreen);
         return sc;
+    }
+
+    public List<Antibody> getAntibodyInArea1(){
+        return this.area1;
+    }
+
+    public void spawnAntibody(Antibody ant){
+        this.area1.add(ant);
+        this.countAntibody++;
     }
 }

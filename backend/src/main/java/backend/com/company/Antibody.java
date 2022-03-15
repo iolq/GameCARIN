@@ -1,15 +1,18 @@
 package backend.com.company;
 
+import org.springframework.stereotype.Component;
+
+
 public class Antibody implements Cell {
 
     private int xPosition;
     private int yPosition;
-    private int HandleCost;
+    private int HandleCost = 30;
     private int dmg;
     private int HP;
 
     public Antibody(){
-        HP = 500;
+        this.HP = 500;
     };
 
     @Override
@@ -63,5 +66,9 @@ public class Antibody implements Cell {
 
     public int HandleCosts(){
         return this.HandleCost;
+    }
+
+    public int getHP(){
+        return this.HP;
     }
 }

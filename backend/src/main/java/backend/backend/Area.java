@@ -2,6 +2,7 @@ package backend.backend;
 
 import backend.com.company.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -9,26 +10,24 @@ import java.util.List;
 
 import java.util.Random;
 
+
 public class Area {
-    @Autowired
     protected int NoArea;
     protected int countVirus;
     protected int countAntibody;
-    private int[][] areas = new int[8][8];
-    private List<Virus> listVirus;
-    private List<Antibody> listAntibody;
+    protected int[][] areas = new int[8][8];
+    protected List<Virus> listVirus = new ArrayList<>();
+    protected List<Antibody> listAntibody = new ArrayList<>();
     private Random random = new Random();
-
 
 
     public Area(int num){
         this.NoArea = num;
         this.countAntibody = 0;
         this.countVirus = 0;
-        this.listVirus = new ArrayList<>();
-        this.listAntibody = new ArrayList<>();
-//        Virus cotuy = new Virus();
-//        this.spawnVirus(cotuy);
+//        this.listVirus = new ArrayList<>();
+//        this.listAntibody = new ArrayList<>();
+
     }
 
     public void ResultParse(){
@@ -36,31 +35,33 @@ public class Area {
     }
     public void spawnAntibody(Antibody anti){
         this.listAntibody.add(anti);
-        countAntibody++;
+        this.countAntibody++;
     }
     public void spawnVirus(Virus virul){
         this.listVirus.add(virul);
-        countVirus++;
+        this.countVirus++;
     }
     public void deleteVirus(Virus virus){
         this.listVirus.remove(virus);
-        countVirus--;
+        this.countVirus--;
     }
     public void deleteAntibody(Antibody anti){
         this.listAntibody.remove(anti);
-        countAntibody--;
-    }
-    public List<Virus> getVirus(){
-
-        return listVirus;
-    }
-    public List<Antibody> getAntibody(){
-        return listAntibody;
+        this.countAntibody--;
     }
 
-    public void setUnitToArea(){
-        
+    public List<Virus> getListVirus(){
+        return this.listVirus;
     }
+
+    public List<Antibody> getListAntibody(){
+
+        return this.listAntibody;
+    }
+
+//    public void setUnitToArea(){
+//
+//    }
 
     public void setArea(int number){
         this.NoArea = number;
@@ -71,9 +72,13 @@ public class Area {
     }
 
     public int getValueOfAntibody(){
-        return this.countAntibody;
+        return countAntibody;
     }
     public int getValueOfVirus(){
-        return this.countVirus;
+        return countVirus;
+    }
+
+    public void setValueOfAntibody(int num){
+        this.countAntibody += num;
     }
 }
