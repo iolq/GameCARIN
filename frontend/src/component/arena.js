@@ -14,7 +14,8 @@ var time;
 var areas;
 class Arena extends React.Component {
 
-    count
+   count
+    
 
     componentWillUnmount(){
         console.warn("componentWillUnmount")
@@ -26,7 +27,6 @@ class Arena extends React.Component {
         this.count = this.setState({time:Date.now})
         this.init();
         this.fetchUp();
-        
         this.updateUp();
     }
 
@@ -37,11 +37,14 @@ class Arena extends React.Component {
 
 
     fetchUp() {
-        GameController.getStageGame().then(data=>gameStage = data)
-
+        GameController.getStageGame().then(data=>{
+            console.log(data)
+            gameStage = data
+        })
+            console.warn(gameStage)
         for(var i=0;i<3;i++){
             GameController.getArea(i+1).then(data=>{
-                areas[i] = data.data;
+                areas[i] = data;
                 console.log(areas[i])
             })
         }
