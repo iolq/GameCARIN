@@ -13,7 +13,7 @@ public class WhiteBloodCell implements Cell{
     private int cooldown = 0;
     private String t = "White";
 
-    WhiteBloodCell(){
+    public WhiteBloodCell(){
         Random rand = new Random();
         HP = rand.nextInt(10)+120;
         Armor = rand.nextInt(10)+20;
@@ -28,7 +28,7 @@ public class WhiteBloodCell implements Cell{
     }
 
     @Override
-    public int ATK(){
+    public int getATK(){
         return 0;
     }
 
@@ -43,22 +43,22 @@ public class WhiteBloodCell implements Cell{
     }
 
     @Override
-    public int xPosition(){
+    public int getxPosition(){
         return xPosition;
     }
 
     @Override
-    public int yPosition(){
+    public int getyPosition(){
         return yPosition;
     }
 
     @Override
-    public int shootField() {
+    public int getshootField() {
         return shoot;
     }
 
     @Override
-    public String typeCell() {
+    public String gettypeCell() {
         return t;
     }
 }

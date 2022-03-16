@@ -24,8 +24,13 @@ public class CellEat implements Cell{
         yPosition += y;
     }
 
+//    @Override
+//    public int ATK() {
+//        return 0;
+//    }
+
     @Override
-    public int ATK(){
+    public int getATK(){
         return Atk;
     }
 
@@ -33,6 +38,21 @@ public class CellEat implements Cell{
     public void dmg(int dmg){
         HP =- dmg;
     }
+
+//    @Override
+//    public int getxPosition() {
+//        return 0;
+//    }
+//
+//    @Override
+//    public int getyPosition() {
+//        return 0;
+//    }
+//
+//    @Override
+//    public int getshootField() {
+//        return 0;
+//    }
 
     public void die(){
         HP = 0;
@@ -42,24 +62,29 @@ public class CellEat implements Cell{
     public void receive(int heal){
         HP += heal;
     }
-    
+
+//    @Override
+//    public String gettypeCell() {
+//        return null;
+//    }
+
     @Override
-    public int xPosition(){
+    public int getxPosition(){
         return xPosition;
     }
 
     @Override
-    public int yPosition(){
+    public int getyPosition(){
         return yPosition;
     }
 
     @Override
-    public int shootField() {
+    public int getshootField() {
         return shoot;
     }
 
     @Override
-    public String typeCell() {
+    public String gettypeCell() {
         return t;
     }
 }

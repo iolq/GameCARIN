@@ -17,11 +17,11 @@ public class ATKCommand implements Statement{
         type = To.consume();
         To.consume(")");
         if(type.contains("A")){
-            virus.dmg(antibody.ATK());
+            virus.dmg(antibody.getATK());
         }else if(type.contains("V")){
-            antibody.dmg(virus.ATK());
+            antibody.dmg(virus.getATK());
         }else if(type.contains("H")){
-            virus.receive(antibody.ATK());
+            virus.receive(antibody.getATK());
         }
     }
 

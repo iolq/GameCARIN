@@ -28,7 +28,7 @@ public class Antibody implements Cell {
     }
 
     @Override
-    public int ATK(){
+    public int getATK(){
         return Atk;
     }
 
@@ -45,7 +45,7 @@ public class Antibody implements Cell {
         this.xPosition = xpos; this.yPosition = ypos;
     }
 
-    public int HandleCosts(){
+    public int getHandleCosts(){
         return this.HandleCost;
     }
 
@@ -55,22 +55,22 @@ public class Antibody implements Cell {
     }
 
     @Override
-    public int xPosition(){
+    public int getxPosition(){
         return xPosition;
     }
 
     @Override
-    public int yPosition(){
+    public int getyPosition(){
         return yPosition;
     }
 
     @Override
-    public int shootField() {
+    public int getshootField() {
         return shoot;
     }
 
     @Override
-    public String typeCell() {
+    public String gettypeCell() {
         return t;
     }
 }

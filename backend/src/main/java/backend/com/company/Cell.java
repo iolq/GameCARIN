@@ -4,17 +4,17 @@ public interface Cell extends Node{
 
     void moveTo(int x,int y);
 
-    int ATK();
+    int getATK();
 
     void dmg(int dmg);
 
-    int xPosition();
+    int getxPosition();
     
-    int yPosition();
+    int getyPosition();
 
-    int shootField();
+    int getshootField();
 
     void receive(int heal);
 
-    String typeCell();
+    String gettypeCell();
 }

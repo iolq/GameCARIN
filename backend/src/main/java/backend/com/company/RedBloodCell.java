@@ -27,7 +27,7 @@ public class RedBloodCell implements Cell{
     }
 
     @Override
-    public int ATK(){
+    public int getATK(){
         return Heal;
     }
 
@@ -41,17 +41,17 @@ public class RedBloodCell implements Cell{
     // }
 
     @Override
-    public int xPosition(){
+    public int getxPosition(){
         return xPosition;
     }
 
     @Override
-    public int yPosition(){
+    public int getyPosition(){
         return yPosition;
     }
 
     @Override
-    public int shootField() {
+    public int getshootField() {
         return HealField;
     }
 
@@ -61,7 +61,7 @@ public class RedBloodCell implements Cell{
     }
 
     @Override
-    public String typeCell() {
+    public String gettypeCell() {
         return t;
     }
 }

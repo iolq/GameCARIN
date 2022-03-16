@@ -19,6 +19,8 @@ public class Area {
     protected int[][] areas = new int[8][8];
     protected List<Virus> listVirus = new ArrayList<>();
     protected List<Antibody> listAntibody = new ArrayList<>();
+    protected int countWhiteBlood;
+    protected List<WhiteBloodCell> listWhiteBlood = new ArrayList<>();
     private Random random = new Random();
     private GeneticCode gr;
 
@@ -27,6 +29,7 @@ public class Area {
         this.NoArea = num;
         this.countAntibody = 0;
         this.countVirus = 0;
+        this.countWhiteBlood=0;
 //        this.listVirus = new ArrayList<>();
 //        this.listAntibody = new ArrayList<>();
 
@@ -38,21 +41,21 @@ public class Area {
         //Anti
         for(int i = 0; i < listAntibody.size(); ++i){
 
-            if(listAntibody.get(i).typeCell().equals("Healing")){
+            if(listAntibody.get(i).gettypeCell().equals("Healing")){
                 for(int j = 0; j < listAntibody.size(); ++j){
                     if(i != j){
                         Cell healCell = listAntibody.get(i);
                         Cell cell = listAntibody.get(j);
 
                         //Heal
-                        if(Math.abs(listAntibody.get(i).xPosition() - listAntibody.get(j).xPosition()) <= listAntibody.get(i).shootField() && Math.abs(listAntibody.get(i).yPosition() - listAntibody.get(j).yPosition()) <= listAntibody.get(i).shootField()){
+                        if(Math.abs(listAntibody.get(i).getxPosition() - listAntibody.get(j).getxPosition()) <= listAntibody.get(i).getshootField() && Math.abs(listAntibody.get(i).getyPosition() - listAntibody.get(j).getyPosition()) <= listAntibody.get(i).getshootField()){
                             gr = new GeneticCode(healCell, cell, "Heal(H)");
                             gr.call();
                         }else{
-                            int xHeal = listAntibody.get(i).xPosition();
-                            int yHeal = listAntibody.get(i).yPosition();
-                            int xAnti = listAntibody.get(j).xPosition();
-                            int yAnti = listAntibody.get(j).yPosition();
+                            int xHeal = listAntibody.get(i).getxPosition();
+                            int yHeal = listAntibody.get(i).getyPosition();
+                            int xAnti = listAntibody.get(j).getxPosition();
+                            int yAnti = listAntibody.get(j).getyPosition();
         
                             if(xHeal == xAnti && yHeal < yAnti){
                                 gr = new GeneticCode(healCell, "Up");
@@ -89,15 +92,15 @@ public class Area {
                     Cell anti = listAntibody.get(i);
                     Cell virus = listVirus.get(j);
                     //shoot
-                    if(Math.abs(listAntibody.get(i).xPosition() - listVirus.get(j).xPosition()) <= listAntibody.get(i).shootField() && Math.abs(listAntibody.get(i).yPosition() - listVirus.get(j).yPosition()) <= listAntibody.get(i).shootField()){
+                    if(Math.abs(listAntibody.get(i).getxPosition() - listVirus.get(j).getxPosition()) <= listAntibody.get(i).getshootField() && Math.abs(listAntibody.get(i).getyPosition() - listVirus.get(j).getyPosition()) <= listAntibody.get(i).getshootField()){
                         gr = new GeneticCode(anti, virus, "ATK(A)");
                         gr.call();
                     } //move
                     else{
-                        int xAnti = listAntibody.get(i).xPosition();
-                        int yAnti = listAntibody.get(i).yPosition();
-                        int xVirus = listVirus.get(j).xPosition();
-                        int yVirus = listVirus.get(j).yPosition();
+                        int xAnti = listAntibody.get(i).getxPosition();
+                        int yAnti = listAntibody.get(i).getyPosition();
+                        int xVirus = listVirus.get(j).getxPosition();
+                        int yVirus = listVirus.get(j).getyPosition();
     
                         if(xAnti == xVirus && yAnti < yVirus){
                             gr = new GeneticCode(anti, "Up");
@@ -140,15 +143,15 @@ public class Area {
                 Cell anti = listAntibody.get(j);
                 Cell virus = listVirus.get(i);
                 //shoot
-                if(Math.abs(listAntibody.get(i).xPosition() - listVirus.get(j).xPosition()) <= listVirus.get(i).shootField() && Math.abs(listAntibody.get(i).yPosition() - listVirus.get(j).yPosition()) <= listVirus.get(i).shootField()){
+                if(Math.abs(listAntibody.get(i).getxPosition() - listVirus.get(j).getxPosition()) <= listVirus.get(i).getshootField() && Math.abs(listAntibody.get(i).getyPosition() - listVirus.get(j).getyPosition()) <= listVirus.get(i).getshootField()){
                     gr = new GeneticCode(anti, virus, "ATK(V)");
                     gr.call();
                 } //move
                 else{
-                    int xAnti = listAntibody.get(j).xPosition();
-                    int yAnti = listAntibody.get(j).yPosition();
-                    int xVirus = listVirus.get(i).xPosition();
-                    int yVirus = listVirus.get(i).yPosition();
+                    int xAnti = listAntibody.get(j).getxPosition();
+                    int yAnti = listAntibody.get(j).getyPosition();
+                    int xVirus = listVirus.get(i).getxPosition();
+                    int yVirus = listVirus.get(i).getyPosition();
 
                     if(xVirus == xAnti && yVirus < yAnti){
                         gr = new GeneticCode(virus, "Up");
@@ -229,5 +232,18 @@ public class Area {
 
     public void setValueOfAntibody(int num){
         this.countAntibody += num;
+    }
+
+    public void spawnWhiteBloodCell(WhiteBloodCell anti){
+        this.listWhiteBlood.add(anti);
+        this.countAntibody++;
+    }
+
+    public List<WhiteBloodCell> getListWhiteBlood(){
+        return this.listWhiteBlood;
+    }
+
+    public int getCountWhite(){
+        return this.countWhiteBlood;
     }
 }

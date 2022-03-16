@@ -10,7 +10,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
-@Component
+import javax.annotation.Resource;
+
+@Component("Game")
+
 public class Game implements Runnable {
     private Integer WidthScreen;
     private Integer HeightScreen;
@@ -45,9 +48,10 @@ public class Game implements Runnable {
                 System.out.println("pouse");
             }
             try{
-                Thread.sleep(5000);
-                Antibody cell = new Antibody();
-                this.listAntArea1.add(cell);
+                Thread.sleep(15000);
+
+                System.out.println("spawn :");
+                spawnAnti();
             }catch(InterruptedException e){}
 
 
@@ -95,8 +99,17 @@ public class Game implements Runnable {
         return this.time;
     }
 
+    public void spawnAnti(){
+        Antibody cell = new Antibody();
+        this.listAntArea1.add(cell);
+    }
+
+    public Game update(){
+        return this;
+    }
     @Override
     public void run() {
         GameLoop();
     }
+
 }

@@ -41,8 +41,8 @@ class Arena extends React.Component {
 
     fetchUp() {
         GameController.getStageGame().then(data=>{
-            
             gameStage = data
+            console.log(gameStage)
         })
         for(var i=0;i<3;i++){
             GameController.getArea(i+1).then(data=>{
@@ -71,6 +71,7 @@ class Arena extends React.Component {
         return (
             <canvas 
                 
+            
             />
         );
     }
