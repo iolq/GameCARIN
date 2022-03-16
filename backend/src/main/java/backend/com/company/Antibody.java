@@ -12,6 +12,7 @@ public class Antibody implements Cell {
     private int shoot = 180;
     private int Armor,Atk,cooldown;
     private String t = "Antibody";
+    private boolean dead = false;
 
     public Antibody(){
         Random rand = new Random();
@@ -35,6 +36,10 @@ public class Antibody implements Cell {
     @Override
     public void dmg(int dmg){
         HP -= dmg-Armor;
+        if(HP <= 0){
+            HP = 0;
+            dead = true;
+        }
     }
 
     public int lifeSteal(int life){
@@ -72,6 +77,11 @@ public class Antibody implements Cell {
     @Override
     public String gettypeCell() {
         return t;
+    }
+
+    @Override
+    public boolean dead() {
+        return dead;
     }
 }
 

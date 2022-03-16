@@ -17,4 +17,6 @@ public interface Cell extends Node{
     void receive(int heal);
 
     String gettypeCell();
+
+    boolean dead();
 }

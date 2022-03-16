@@ -12,6 +12,7 @@ public class WhiteBloodCell implements Cell{
     private int Atk = 0;
     private int cooldown = 0;
     private String t = "White";
+    private boolean dead = false;
 
     public WhiteBloodCell(){
         Random rand = new Random();
@@ -35,6 +36,15 @@ public class WhiteBloodCell implements Cell{
     @Override
     public void dmg(int dmg){
         HP =- dmg-Armor;
+        if(HP <= 0){
+            HP = 0;
+            dead = true;
+        }
+    }
+
+    @Override
+    public boolean dead() {
+        return dead;
     }
 
     @Override

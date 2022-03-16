@@ -11,6 +11,7 @@ public class Virus implements Cell {
     private int shoot = 120;
     private int Armor,Atk,cooldown;
     private String t = "Virus";
+    private boolean dead = false;
 
     public Virus(){
         Random rand = new Random();
@@ -47,6 +48,15 @@ public class Virus implements Cell {
     @Override
     public void dmg(int dmg){
         HP =- dmg-Armor;
+        if(HP <= 0){
+            HP = 0;
+            dead = true;
+        }
+    }
+
+    @Override
+    public boolean dead() {
+        return dead;
     }
 
     @Override
