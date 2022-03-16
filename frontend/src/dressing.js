@@ -24,12 +24,17 @@ const BannerBtn = styled.a`
         color: #fff;
 }
 `
+const Container = styled.div`
+    max-width: 1000px;
+    margin: 0 auto;
+    justify-content: center;
+`
 
 function Dressing() {
     return (
 
-        <div >
-
+        <Container >
+            <div>HOW TO PLAY</div>
 
 
             <BannerBtn className='button-corner' href="/SelectArena">Select Arena</BannerBtn>
@@ -38,7 +43,7 @@ function Dressing() {
 
 
 
-        </div >
+        </Container >
 
     );
 }

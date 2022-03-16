@@ -73,7 +73,7 @@ function SelectArena() {
 
         <Container>
             <Bgimage>
-                <BannerBtn href="/Dressing">back</BannerBtn>
+                <BannerBtn href="/">back</BannerBtn>
                 <Button_corner>
                     <BannerBtn href="/Arena">EASY</BannerBtn>
                     <BannerBtn href="/Arena">MEDIUM</BannerBtn>
