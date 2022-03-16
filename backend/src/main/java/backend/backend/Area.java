@@ -215,12 +215,18 @@ public class Area {
 //
 //    }
 
-    public void setArea(int number){
-        this.NoArea = number;
+    public void setArea(Area number){
+        this.countWhiteBlood = number.countWhiteBlood;
+        this.countAntibody = number.countAntibody;
+        this.NoArea = number.NoArea;
+        this.listWhiteBlood = number.listWhiteBlood;
+        this.listAntibody = number.listAntibody;
+        this.listVirus = number.listVirus;
+        this.countVirus = number.countVirus;
     }
 
-    public int getArea(){
-        return this.NoArea;
+    public Area getArea(){
+        return this;
     }
 
     public int getValueOfAntibody(){

@@ -38,9 +38,23 @@ public class AreaConnected {
     }
 
     @CrossOrigin
-    @PostMapping
-    public void setArea1(@RequestBody Area a){
-        
+    @PostMapping(path="/setArea1")
+    public Area setArea1(@RequestBody Area a){
+        this.a51.setArea(a);
+        return  this.a51.getArea();
     }
 
+    @CrossOrigin
+    @PostMapping(path="/setArea2")
+    public Area setArea2(@RequestBody Area a){
+        this.a52.setArea(a);
+        return this.a52.getArea();
+    }
+
+    @CrossOrigin
+    @PostMapping(path="/setArea3")
+    public Area setArea3(@RequestBody Area a){
+        this.a53.setArea(a);
+        return this.a53.getArea();
+    }
 }

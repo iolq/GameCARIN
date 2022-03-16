@@ -57,6 +57,7 @@ function Arena() {
     const [arena1, setArena1] = useState();
     const [arena2, setArena2] = useState();
     const [arena3, setArena3] = useState();
+    
 
     useEffect(()=>{
         GameController.getArea(1).then(datas=>setArena1(datas))
@@ -64,8 +65,12 @@ function Arena() {
         GameController.getArea(2).then(data1=>setArena2(data1))
     },[])
     
-    console.log(arena1.countWhite)
+    console.log(arena1)
     
+    function getPositionG(event){
+
+    }
+
     return (
 
 

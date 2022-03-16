@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 
 @Component("Game")
-
 public class Game implements Runnable {
     private Integer WidthScreen;
     private Integer HeightScreen;
@@ -76,9 +75,9 @@ public class Game implements Runnable {
         this.stage = number;
     }
 
-    public int getGameStage(){
-        return this.stage;
-    }
+//    public int getGameStage(){
+//        return this.stage;
+//    }
 
     public List<Area> getAreas(){
         return this.arena;
@@ -91,9 +90,9 @@ public class Game implements Runnable {
         return sc;
     }
 
-    public List<Antibody> getListAntArea1(){
-        return this.listAntArea1;
-    }
+//    public List<Antibody> getListAntArea1(){
+//        return this.listAntArea1;
+//    }
 
     public Time getTimes(){
         return this.time;
