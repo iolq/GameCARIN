@@ -10,6 +10,7 @@ public class CellEat implements Cell{
     private int shoot = 60;
     private int Armor,Atk;
     private String t = "CellEat";
+    private boolean dead = false;
 
     CellEat(){
         Random rand = new Random();
@@ -24,10 +25,7 @@ public class CellEat implements Cell{
         yPosition += y;
     }
 
-//    @Override
-//    public int ATK() {
-//        return 0;
-//    }
+
 
     @Override
     public int getATK(){
@@ -36,26 +34,22 @@ public class CellEat implements Cell{
 
     @Override
     public void dmg(int dmg){
-        HP =- dmg;
+        HP =- dmg-Armor;
+        if(HP <= 0){
+            HP = 0;
+            dead = true;
+        }
     }
 
-//    @Override
-//    public int getxPosition() {
-//        return 0;
-//    }
-//
-//    @Override
-//    public int getyPosition() {
-//        return 0;
-//    }
-//
-//    @Override
-//    public int getshootField() {
-//        return 0;
-//    }
+    @Override
+    public boolean dead() {
+        return dead;
+    }
+
 
     public void die(){
         HP = 0;
+        dead = true;
     }
     
     @Override
@@ -63,10 +57,7 @@ public class CellEat implements Cell{
         HP += heal;
     }
 
-//    @Override
-//    public String gettypeCell() {
-//        return null;
-//    }
+
 
     @Override
     public int getxPosition(){
@@ -87,4 +78,6 @@ public class CellEat implements Cell{
     public String gettypeCell() {
         return t;
     }
+
+    
 }

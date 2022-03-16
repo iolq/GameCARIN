@@ -11,6 +11,7 @@ public class RedBloodCell implements Cell{
     private int HealField = 120;
     private int Armor,Heal,cooldown;
     private String t = "Healing";
+    private boolean dead = false;
 
     RedBloodCell(){
         Random rand = new Random();
@@ -34,11 +35,16 @@ public class RedBloodCell implements Cell{
     @Override
     public void dmg(int dmg){
         HP =- dmg-Armor;
+        if(HP <= 0){
+            HP = 0;
+            dead = true;
+        }
     }
 
-    // public int Heal(){
-    //     return Heal;
-    // }
+    @Override
+    public boolean dead() {
+        return dead;
+    }
 
     @Override
     public int getxPosition(){

@@ -44,7 +44,7 @@ public class Game implements Runnable {
         || this.arena.get(2).getValueOfAntibody() != 0 ) {
 
             while (this.time.getTime() == 0) {
-                System.out.println("pouse");
+                System.out.println("pause");
             }
             try{
                 Thread.sleep(15000);
