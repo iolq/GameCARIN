@@ -1,6 +1,6 @@
 
 import styled from "styled-components";
-import Arena from "./component/arena";
+import Arena from "./Arena";
 import GameController from "./component/GameController";
 import './Lobby.css';
 

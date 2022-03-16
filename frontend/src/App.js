@@ -8,7 +8,7 @@ import GameController from './component/GameController';
 import Dressing from './dressing';
 import Lobby from './Lobby';
 import SelectArena from './SelectArena';
-import Arena from './component/arena';
+import Arena from './Arena';
 
 
 // const BannerBtn = styled.a`
