@@ -34,7 +34,7 @@ public class Antibody implements Cell {
 
     @Override
     public void dmg(int dmg){
-        HP -= dmg;
+        HP -= dmg-Armor;
     }
 
     public int lifeSteal(int life){

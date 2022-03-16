@@ -36,7 +36,7 @@ public class CellEat implements Cell{
 
     @Override
     public void dmg(int dmg){
-        HP =- dmg;
+        HP =- dmg-Armor;
     }
 
 //    @Override
