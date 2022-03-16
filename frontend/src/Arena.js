@@ -65,10 +65,7 @@ function Arena() {
     },[])
     
     console.log(arena1.countWhite)
-    useEffect(() => {
-        const data = GameController.getStageGame().then(datas => setArena1(datas.ares[0]))
-        console.log(arena1)
-    }, [])
+    
     return (
 
 
