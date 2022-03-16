@@ -37,5 +37,10 @@ public class AreaConnected {
         return a53;
     }
 
+    @CrossOrigin
+    @PostMapping
+    public void setArea1(@RequestBody Area a){
+        
+    }
 
 }

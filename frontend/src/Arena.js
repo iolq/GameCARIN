@@ -56,8 +56,15 @@ function Arena() {
 
     const [arena1, setArena1] = useState();
     const [arena2, setArena2] = useState();
+    const [arena3, setArena3] = useState();
 
-
+    useEffect(()=>{
+        GameController.getArea(1).then(datas=>setArena1(datas))
+        GameController.getArea(3).then(data2=>setArena3(data2))
+        GameController.getArea(2).then(data1=>setArena2(data1))
+    },[])
+    
+    console.log(arena1.countWhite)
     useEffect(() => {
         const data = GameController.getStageGame().then(datas => setArena1(datas.ares[0]))
         console.log(arena1)
