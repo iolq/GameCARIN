@@ -6,10 +6,10 @@ const Bar = styled.div`
 justify-content: center;
 display: flex;
 flex-direction: column;
- border: 2px solid ;
- width: 145px;
+ border: 2px solid #555555;
+ width: 140px;
 
-  border-radius: 24px;
+  /* border-radius: 24px; */
   
   padding: 16px 32px;
   
