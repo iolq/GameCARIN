@@ -31,7 +31,7 @@ function Lobby() {
             <div className="App">
                 <div class="container">
                     <div className='homepage-bgimage '></div>
-                    <BannerBtn className='button-corner' href="/Dressing">PLAY GAME</BannerBtn>
+                    <BannerBtn className='button-corner' href="/SelectArena">PLAY GAME</BannerBtn>
                 </div>
 
             </div >
