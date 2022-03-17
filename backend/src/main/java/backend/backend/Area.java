@@ -225,9 +225,9 @@ public class Area {
         this.countVirus = number.countVirus;
     }
 
-    public Area getArea(){
-        return this;
-    }
+//    public Area getArea(){
+//        return this;
+//    }
 
     public int getValueOfAntibody(){
         return countAntibody;

@@ -104,6 +104,8 @@ public class Game implements Runnable {
     }
 
     public Game update(){
+        Antibody name = new Antibody();
+        this.getAreas().get(0).spawnAntibody(name);
         return this;
     }
     @Override
