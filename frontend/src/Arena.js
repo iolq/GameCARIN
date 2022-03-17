@@ -67,9 +67,7 @@ function Arena() {
     
     console.log(arena1)
     
-    function getPositionG(event){
-
-    }
+    
 
     return (
 

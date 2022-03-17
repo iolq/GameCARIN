@@ -33,8 +33,8 @@ public class Game implements Runnable {
         this.inventory = new Inventory();
         this.HeightScreen = 1090;
         this.WidthScreen = 1920;
-        Antibody name = new Antibody();
-        this.listAntArea1.add(name);
+//        Antibody name = new Antibody();
+//        this.listAntArea1.add(name);
     }
 
 

@@ -3,9 +3,7 @@ import Config from "./Config";
 
 
 class GameController{
-    static async setArea(number,area){
-        const Url = Config.url + "Area/"
-    }
+    
     static async getArea(numberofstage){
         const UrlofArea = Config.url + "Area/getArea" + numberofstage;
         
